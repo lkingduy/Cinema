@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        <%= title %>
+    </title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg"
+        crossorigin="anonymous">
+</head>
+
+<body>
+<!-- header + navbar -->
+<div class="header">
+        <h1 style="padding-left:40px; ">
+            <strong>Cinema Application</strong>
+        </h1>
+    </div>
+    <div class="navbar" style="padding: 0px 40px">
+
+        <div>
+            <a class="btn navbar-brand" href="/">
+                <i class="fa fa-home" style="color: white"></i>
+            </a>
+            <a class="btn navbar-brand" href="#">
+                <i class="fa fa-arrow-circle-left" style="color: white"></i>
+            </a>
+        </div>
+        <div style="float: right;">
+            <a class="btn navbar-brand" href="#">
+                <i class="fa fa-upload fa-lg" style="color: white"></i>
+                <p>Tao Phim moi</p>
+            </a>
+            <a class="btn navbar-brand" href="#" data-toggle="modal" data-target="#myModal">
+                <i class="fa fa-sign-in fa-lg" style="color: white"></i>
+                <p>Dang nhap</p>
+            </a>
+            <a class="btn navbar-brand" href="#" data-toggle="modal" data-target="#myModal2">
+                <i class="fa fa-user-plus fa-lg" style="color: white"></i>
+                <p>Dang ki</p>
+            </a>
+        </div>
+    </div>
+
+<!-- Modal Dang nhap-->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h1 style="text-align: center">Dang nhap</h1>
+      </div>
+      <div class="modal-body">
+        <form class="form-horizontal">
+                <div class="form-group">
+                        <label class="control-label col-sm-2" for="email">Email:</label>
+                        <div class="col-sm-10">
+                          <input type="email" class="form-control" id="email" placeholder="Enter email">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="control-label col-sm-2" for="pwd">Password:</label>
+                        <div class="col-sm-10"> 
+                          <input type="password" class="form-control" id="pwd" placeholder="Enter password">
+                        </div>
+                      </div>
+                      <div class="form-group"> 
+                        <div class="col-sm-offset-2 col-sm-10">
+                          <div class="checkbox">
+                            <label><input type="checkbox"> Remember me</label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-group"> 
+                            <div class="col-sm-offset-5 col-sm-10">
+                              <button type="submit" class="btn btn-success">Dang nhap</button>
+                            </div>
+                          </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-3 col-sm-10">
+                                <a href="#" style="text-decoration: none">Quen mat khau<i class="fa fa-question-circle-o" aria-hidden="true"></i></a>&nbsp;&nbsp;
+                                Ban chua la thanh vien?<a href="#" style="text-decoration: none"><span style="color: steelblue">Dang ki</span></a>
+                            </div>
+                        </div>  
+                      
+        </form>
+      </div>
+      <div class="modal-footer">
+                    <div class="container">
+                        <div class="row">
+                                <div class="btn col-sm-offset-1 col-md-2 face-btn">
+                                        <span style="color: white">Dang nhap bang facebook</span> 
+                                    </div>
+                                    <div class="btn col-sm-offset-1 col-md-2 google-btn">
+                                            <span style="color: white">Dang nhap bang google+</span>
+                                    </div>
+                        </div>
+                            
+                          </div>                
+      </div>
+    </div>
+
+  </div>
+</div>
+<!-- Modal Dang ky-->
+<div id="myModal2" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+      
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h1 style="text-align: center">Dang ky</h1>
+            </div>
+            <div class="modal-body">
+              <form class="form-horizontal">
+                      <div class="form-group">
+                              <label class="control-label col-sm-4" for="email">Ten nguoi dung:</label>
+                              <div class="col-sm-8">
+                                <input type="email" class="form-control" id="email" placeholder="Enter name">
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <label class="control-label col-sm-4" for="pwd">Dia chi email:</label>
+                              <div class="col-sm-8"> 
+                                <input type="password" class="form-control" id="pwd" placeholder="Enter address">
+                              </div>
+                            </div>
+                            <div class="form-group">
+                                    <label class="control-label col-sm-4" for="email">Mat khau:</label>
+                                    <div class="col-sm-8">
+                                      <input type="email" class="form-control" id="email" placeholder="Enter password">
+                                    </div>
+                                  </div>
+                                  <div class="form-group">
+                                        <label class="control-label col-sm-4" for="email">Xac nhan mat khau:</label>
+                                        <div class="col-sm-8">
+                                          <input type="email" class="form-control" id="email" placeholder="Confirm password">
+                                        </div>
+                                      </div>
+                            <div class="form-group"> 
+                                  <div class="col-sm-offset-5 col-sm-10">
+                                    <button type="submit" class="btn btn-success"><i class="fa fa-user-plus fa-lg" style="color: white"></i>Tao tai khoan</button>
+                                  </div>
+                                </div>
+                              <div class="form-group">
+                                  <div class="col-sm-offset-4 col-sm-10">
+                                      Ban da la thanh vien?<a href="#" style="text-decoration: none"><span style="color: steelblue">Dang nhap</span></a>
+                                  </div>
+                              </div>  
+                            
+              </form>
+            </div>
+          </div>
+      
+        </div>
+      </div>
+
+        <div>
+            <a class="btn navbar-brand" href="">
+                <i class="fa fa-home" style="color: white"></i>
+            </a>
+            <a class="btn navbar-brand" href="">
+                <i class="fa fa-arrow-circle-left" style="color: white"></i>
+            </a>
+        </div>
+        <div style="float: right;">
+            <a class="btn navbar-brand" href="#">
+                <i class="fa fa-upload fa-lg" style="color: white"></i>
+                <p>Tao Phim moi</p>
+            </a>
+            <a class="btn navbar-brand" href="#">
+                <i class="fa fa-sign-in fa-lg" style="color: white"></i>
+                <p>Dang nhap</p>
+            </a>
+            <a class="btn navbar-brand" href="#">
+                <i class="fa fa-user-plus fa-lg" style="color: white"></i>
+                <p>Dang ki</p>
+            </a>
+        </div>
+    </div>
+    <div class="container my-container-center my-title-header">
+        <h1>Tao phim moi</h1>
+    </div>
+    <div class="container my-create-film">
+        <form action="/taophim" method="POST">
+            <div class="container col-sm-12 col-md-5 text-center ">
+                <a href="">
+                    <img src="/images/image.png" width="422" height="320" class="img-upload" style="" />
+                </a>
+                    <div class="form-group">
+                        <label class="btn btn-primary text-center my-btn" for="exampleFormControlFile1">
+                            <i class="fa fa-file-image-o fa-lg"></i>Chon hinh minh hoa</label>
+                        <!-- <input type="file" class="form-control-file hide" id="exampleFormControlFile1"> -->
+                    </div>
+            </div>
+            <div class="container col-sm-12 col-md-7 my-form-film">
+                <div class="form-group">
+                    <h4>Ten bo phim</h4>
+                    <input type="text" class="form-control my-input-film" name="tenphim" />
+                </div>
+                <div class="form-group">
+                    <h4>The loai phim:</h4>
+                    <select class="my-input-film col-md-12 col-sm-12 col-lg-12 col-xs-12 my-select-film">
+                        <option selected="selected">Tieu su lich su</option>
+                        <option>Lang man tinh cam</option>
+                        <option>Khoa hoc vien tuong</option>
+                        <option>Huyen bi huyen ao</option>
+                        <option>Phieu luu mao hiem</option>
+                        <option>Phat luat hinh su</option>
+                        <option>Chien trang co trang</option>
+                        <option>Chien trang hien dai</option>
+                        <option>Chien tranh trung dai</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <h4>Thoi gian phat hanh:</h4>
+                    <select class="my-input-film my-select-film col-lg-5 col-md-5 col-sm-5 col-xs-5 ">
+                        <option selected="selected">Thang 1</option>
+                        <option selected="selected">Thang 2</option>
+                        <option selected="selected">Thang 3</option>
+                        <option selected="selected">Thang 4</option>
+                        <option selected="selected">Thang 5</option>
+                        <option selected="selected">Thang 6</option>
+                        <option selected="selected">Thang 7</option>
+                        <option selected="selected">Thang 8</option>
+                        <option selected="selected">Thang 9</option>
+                        <option selected="selected">Thang 10</option>
+                        <option selected="selected">Thang 11</option>
+                        <option selected="selected">Thang 12</option>
+                    </select>
+                    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2"></div>
+                    <select class="my-input-film col-md-5 col-sm-5 col-lg-5 col-xs-5 my-select-film ">
+
+                        <option selected="selected">2018</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <h4>Noi dung mo ta</h4>
+                    <textarea class="form-control" rows="5" placeholder="Ten dien vien,noi dung phim...">
+
+                </textarea>
+                </div>
+            </div>
+            <div class="container my-container-center my-bot-form">
+                <button type="submit" class="btn btn-primary my-btn text-center " style="margin-right: 15px" disabled="disabled">
+                    <i class="fa fa-upload fa-lg"></i>Dang phim
+                </button>
+                <button type="submit" class="btn btn-primary my-btn text-center" style="margin-right: 15px">
+                    <i class="fa fa-sign-in fa-lg"></i>Ban can dang nhap
+                </button>
+            </div>
+        </form>
+    </div>
+    <div class="footer text-center my-footer">
+        <p style="text-align: center;line-height: 100px">Copyright © Cinema Website 2017-2018</p>
+    </div>
+</body>
+</html>
