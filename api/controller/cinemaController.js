@@ -38,7 +38,8 @@ cinemaController.save = function(req, res) {
         res.render("../views/trangchu");
       } else {
         console.log("Successfully created an film.");
-        res.redirect("/trangchu"+cinema._id);
+        // res.redirect("/trangchu"+cinema._id);
+        res.redirect("/trangchu");
       }
     });
   };

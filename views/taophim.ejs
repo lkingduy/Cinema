@@ -194,7 +194,7 @@
         <h1>Tao phim moi</h1>
     </div>
     <div class="container my-create-film">
-        <form action="/taophim" method="POST">
+        <form action="/taophim/save" method="POST">
             <div class="container col-sm-12 col-md-5 text-center ">
                 <a href="">
                     <img src="/images/image.png" width="422" height="320" class="img-upload" style="" />
@@ -208,49 +208,48 @@
             <div class="container col-sm-12 col-md-7 my-form-film">
                 <div class="form-group">
                     <h4>Ten bo phim</h4>
-                    <input type="text" class="form-control my-input-film" name="tenphim" />
+                    <input type="text" class="form-control my-input-film" name="name" />
                 </div>
                 <div class="form-group">
                     <h4>The loai phim:</h4>
                     <select class="my-input-film col-md-12 col-sm-12 col-lg-12 col-xs-12 my-select-film">
                         <option selected="selected">Tieu su lich su</option>
-                        <option>Lang man tinh cam</option>
-                        <option>Khoa hoc vien tuong</option>
-                        <option>Huyen bi huyen ao</option>
-                        <option>Phieu luu mao hiem</option>
-                        <option>Phat luat hinh su</option>
-                        <option>Chien trang co trang</option>
-                        <option>Chien trang hien dai</option>
-                        <option>Chien tranh trung dai</option>
+                        <option value="lmtc">Lang man tinh cam</option>
+                        <option value="khvt">Khoa hoc vien tuong</option>
+                        <option value="hbha">Huyen bi huyen ao</option>
+                        <option value="plmh">Phieu luu mao hiem</option>
+                        <option value="plhs">Phat luat hinh su</option>
+                        <option value="ctct">Chien trang co trang</option>
+                        <option value="cthd">Chien trang hien dai</option>
+                        <option value="cttd">Chien tranh trung dai</option>
                     </select>
                 </div>
                 <div class="form-group">
                     <h4>Thoi gian phat hanh:</h4>
                     <select class="my-input-film my-select-film col-lg-5 col-md-5 col-sm-5 col-xs-5 ">
-                        <option selected="selected">Thang 1</option>
-                        <option selected="selected">Thang 2</option>
-                        <option selected="selected">Thang 3</option>
-                        <option selected="selected">Thang 4</option>
-                        <option selected="selected">Thang 5</option>
-                        <option selected="selected">Thang 6</option>
-                        <option selected="selected">Thang 7</option>
-                        <option selected="selected">Thang 8</option>
-                        <option selected="selected">Thang 9</option>
-                        <option selected="selected">Thang 10</option>
-                        <option selected="selected">Thang 11</option>
-                        <option selected="selected">Thang 12</option>
+                        <option selected="selected" value="1">Thang 1</option>
+                        <option value="2">Thang 2</option>
+                        <option value="3">Thang 3</option>
+                        <option value="4">Thang 4</option>
+                        <option value="5">Thang 5</option>
+                        <option value="6">Thang 6</option>
+                        <option value="7">Thang 7</option>
+                        <option value="8">Thang 8</option>
+                        <option value="9">Thang 9</option>
+                        <option value="10">Thang 10</option>
+                        <option value="11">Thang 11</option>
+                        <option value="12">Thang 12</option>
                     </select>
                     <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2"></div>
                     <select class="my-input-film col-md-5 col-sm-5 col-lg-5 col-xs-5 my-select-film ">
 
-                        <option selected="selected">2018</option>
+                        <option selected="selected" value="2018">2018</option>
                     </select>
                 </div>
 
                 <div class="form-group">
                     <h4>Noi dung mo ta</h4>
-                    <textarea class="form-control" rows="5" placeholder="Ten dien vien,noi dung phim...">
-
+                    <textarea name="description" class="form-control" rows="5" placeholder="Ten dien vien,noi dung phim...">
                 </textarea>
                 </div>
             </div>
@@ -261,6 +260,9 @@
                 <button type="submit" class="btn btn-primary my-btn text-center" style="margin-right: 15px">
                     <i class="fa fa-sign-in fa-lg"></i>Ban can dang nhap
                 </button>
+                <button type="submit" class="btn btn-primary my-btn text-center" style="margin-right: 15px">
+                        Tao phim
+                    </button>
             </div>
         </form>
     </div>
