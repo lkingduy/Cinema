@@ -68,6 +68,7 @@ p {
   font-family: 'Quicksand', sans-serif;
   font-size: 1.1em;
   margin-top: 50px;
+  width: 100%;
 }
 .margin-page{
   margin-top: 80px;

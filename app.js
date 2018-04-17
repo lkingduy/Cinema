@@ -30,9 +30,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 var setupController = require("./api/controller/setupController");
 setupController(app);
 
-app.use('/', indexRouter);
+app.use('/', trangchuRouter);
 app.use('/taophim', taophimRouter);
-app.use('/trangchu',trangchuRouter);
 app.use('/chitietphim',chitietphimRouter);
 
 // catch 404 and forward to error handler
