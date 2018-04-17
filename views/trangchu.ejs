@@ -3,7 +3,7 @@
 
 <head>
     <title>
-        <%= title %>
+        
     </title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -27,7 +27,7 @@
     <div class="navbar" style="padding: 0px 40px">
 
         <div>
-            <a class="btn navbar-brand" href="#">
+            <a class="btn navbar-brand" href="/">
                 <i class="fa fa-home" style="color: white"></i>
             </a>
             <a class="btn navbar-brand" href="#">
@@ -35,7 +35,7 @@
             </a>
         </div>
         <div style="float: right;">
-            <a class="btn navbar-brand" href="#">
+            <a class="btn navbar-brand" href="/taophim">
                 <i class="fa fa-upload fa-lg" style="color: white"></i>
                 <p>Tao Phim moi</p>
             </a>
@@ -166,37 +166,23 @@
         </div>
       </div>
     <!-- show danh sach phim -->
-    <div>
-        <div class="margin-page col-md-4">
-            <div class="show-phim">
-                <img class="show-phim" src="/images/anhvaem.jpg" />
-                <div class="description-phim">
-                    <p>Anh va em(12-2017)</p>
-                </div>
-            </div>
-        </div>
-        <div class="margin-page col-md-4">
-                <div class="show-phim">
-                    <img class="show-phim" src="/images/sakura.jpg" />
-                    <div class="description-phim">
-                        <p>Cong su(12-2017)</p>
-                    </div>
-                </div>
-            </div>
-            <div class="margin-page col-md-4">
-                    <div class="show-phim">
-                        <img class="show-phim" src="/images/tomandjerry.jpg" />
-                        <div class="description-phim">
-                            <p>Cong su(12-2017)</p>
-                        </div>
-                    </div>
-                </div>
+
+    <div class="margin-page">
+        <% for (var i = 0; i < cinemas.length;i ++) { %>
+          <div class="margin-film col-md-4">
+              <a class="show-phim" href="/chitietphim">
+                  <img class="show-phim" src="<%= cinemas[i].image %>" />
+                  <div class="description-phim">
+                      <p><%= cinemas[i].name %>(<%= cinemas[i].timePublish %>)</p>
+                  </div>
+                </a>
+          </div>
+          <% } %>
     </div>
    
             <!-- Footer -->
-
-            <div class="text-center my-footer" style="position: absolute;bottom: 0%;height: 50px;">
-                <p style="text-align: center;line-height: 50px">Copyright © Cinema Website 2017-2018</p>
-            </div>
+             <div class="footer text-center my-footer">
+        <p style="text-align: center;line-height: 100px">Copyright © Cinema Website 2017-2018</p>
+    </div>
 </body>
 </html>

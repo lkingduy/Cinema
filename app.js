@@ -10,7 +10,7 @@ var config = require("./config");
 //connect db
 console.log(config.getDbConnectionString());
 mongoose.connect(config.getDbConnectionString());
-
+require('./api/models/cinemaModel');
 var indexRouter = require('./routes/index');
 var taophimRouter = require('./routes/taophim');
 var trangchuRouter = require('./routes/trangchu');
@@ -29,7 +29,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 var setupController = require("./api/controller/setupController");
 setupController(app);
-
 app.use('/', trangchuRouter);
 app.use('/taophim', taophimRouter);
 app.use('/chitietphim',chitietphimRouter);

@@ -72,7 +72,12 @@ p {
 }
 .margin-page{
   margin-top: 80px;
-  margin-bottom: 80px; 
+  margin-bottom: 80px;
+  width: 100%;
+  overflow: hidden; 
+}
+.margin-film{
+  margin-bottom: 30px;
 }
 .show-phim{
   width: 100%;

@@ -12,7 +12,7 @@ var cinemaSchema = new Schema({
     userCreated: String
 });
 
-var phim = mongoose.model("phim", cinemaSchema);
+var phim = mongoose.model("Cinema", cinemaSchema);
 
 module.exports = phim;
  
