@@ -6,6 +6,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var mongoose = require('mongoose');
 var config = require("./config");
+var session = require('express-session');
 
 //connect db
 console.log(config.getDbConnectionString());
@@ -25,6 +26,7 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(session({secret: 'mysecret', resave: false, saveUninitialized: false}))
 app.use(express.static(path.join(__dirname, 'public')));
 
 var setupController = require("./api/controller/setupController");

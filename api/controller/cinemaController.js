@@ -20,7 +20,7 @@ cinemaController.show = function(req, res) {
         console.log("Error:", err);
       }
       else {
-        res.render("../views/trangchu", {cinema: cinema});
+        res.render("../views/chitietphim/", {cinema: cinema});
       }
     });
   };
@@ -31,7 +31,7 @@ cinemaController.create = function(req, res) {
 //add save new film
 cinemaController.save = function(req, res) {
     var cinema = new Cinema(req.body);
-  
+    cinema.image = "/images/"+ cinema.image; 
     cinema.save(function(err) {
       if(err) {
         console.log(err);
@@ -39,7 +39,7 @@ cinemaController.save = function(req, res) {
       } else {
         console.log("Successfully created an film.");
         // res.redirect("/trangchu"+cinema._id);
-        res.redirect("/trangchu");
+        res.redirect("/");
       }
     });
   };

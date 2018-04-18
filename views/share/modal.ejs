@@ -1,0 +1,115 @@
+<!-- Modal Dang nhap-->
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+  
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h1 style="text-align: center">Dang nhap</h1>
+        </div>
+        <div class="modal-body">
+          <form class="form-horizontal" action="/" method="POST">
+                  <div class="form-group">
+                          <label class="control-label col-sm-2" for="email">Email:</label>
+                          <div class="col-sm-10">
+                            <input type="email" class="form-control" id="email" placeholder="Enter email">
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label class="control-label col-sm-2" for="pwd">Password:</label>
+                          <div class="col-sm-10"> 
+                            <input type="password" class="form-control" id="pwd" placeholder="Enter password">
+                          </div>
+                        </div>
+                        <div class="form-group"> 
+                          <div class="col-sm-offset-2 col-sm-10">
+                            <div class="checkbox">
+                              <label><input type="checkbox"> Remember me</label>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="form-group"> 
+                              <div class="col-sm-offset-5 col-sm-10">
+                                <button type="submit" class="btn btn-success">Dang nhap</button>
+                              </div>
+                            </div>
+                          <div class="form-group">
+                              <div class="col-sm-offset-3 col-sm-10">
+                                  <a href="#" style="text-decoration: none">Quen mat khau<i class="fa fa-question-circle-o" aria-hidden="true"></i></a>&nbsp;&nbsp;
+                                  Ban chua la thanh vien?<a href="#" style="text-decoration: none"><span style="color: steelblue">Dang ki</span></a>
+                              </div>
+                          </div>  
+                        
+          </form>
+        </div>
+        <div class="modal-footer">
+                      <div class="container">
+                          <div class="row">
+                                  <div class="btn col-sm-offset-1 col-md-2 face-btn">
+                                          <span style="color: white">Dang nhap bang facebook</span> 
+                                      </div>
+                                      <div class="btn col-sm-offset-1 col-md-2 google-btn">
+                                              <span style="color: white">Dang nhap bang google+</span>
+                                      </div>
+                          </div>
+                              
+                            </div>                
+        </div>
+      </div>
+  
+    </div>
+  </div>
+  <!-- Modal Dang ky-->
+  <div id="myModal2" class="modal fade" role="dialog">
+          <div class="modal-dialog">
+        
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h1 style="text-align: center">Dang ky</h1>
+              </div>
+              <div class="modal-body">
+                <form class="form-horizontal" action="/save" method="POST">
+                        <div class="form-group">
+                                <label class="control-label col-sm-4" for="name">Ten nguoi dung:</label>
+                                <div class="col-sm-8">
+                                  <input type="text" class="form-control" id="name" name="name" placeholder="Enter name">
+                                </div>
+                              </div>
+                              <div class="form-group">
+                                <label class="control-label col-sm-4" for="email">Dia chi email:</label>
+                                <div class="col-sm-8"> 
+                                  <input type="email" class="form-control" id="email" name="email" placeholder="Enter email">
+                                </div>
+                              </div>
+                              <div class="form-group">
+                                      <label class="control-label col-sm-4" for="password">Mat khau:</label>
+                                      <div class="col-sm-8">
+                                        <input type="password" class="form-control" id="password" name="password" placeholder="Enter password">
+                                      </div>
+                                    </div>
+                                    <div class="form-group">
+                                          <label class="control-label col-sm-4" for="repassword">Xac nhan mat khau:</label>
+                                          <div class="col-sm-8">
+                                            <input type="password" class="form-control" id="repassword" name="repassword" placeholder="Confirm password">
+                                          </div>
+                                        </div>
+                              <div class="form-group"> 
+                                    <div class="col-sm-offset-5 col-sm-10">
+                                      <button type="submit" class="btn btn-success"><i class="fa fa-user-plus fa-lg" style="color: white"></i>Tao tai khoan</button>
+                                    </div>
+                                  </div>
+                                <div class="form-group">
+                                    <div class="col-sm-offset-4 col-sm-10">
+                                        Ban da la thanh vien?<a href="#" style="text-decoration: none"><span style="color: steelblue">Dang nhap</span></a>
+                                    </div>
+                                </div>  
+                              
+                </form>
+              </div>
+            </div>
+        
+          </div>
+        </div>
