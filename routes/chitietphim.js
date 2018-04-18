@@ -5,5 +5,5 @@ var cinema = require('../api/controller/cinemaController');
 // router.get('/', function(req, res, next) {
 //   res.render('chitietphim', { title: 'Express',name:'Duy',person:{name:'hi',age:'1'} });
 // });
-router.get('/chitietphim/:id', cinema.show);
+router.get('/:id', cinema.show);
 module.exports = router;
