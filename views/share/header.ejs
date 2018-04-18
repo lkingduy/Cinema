@@ -19,13 +19,27 @@
             <i class="fa fa-upload fa-lg" style="color: white"></i>
             <p>Tao Phim moi</p>
         </a>
-        <a class="btn navbar-brand" href="#" data-toggle="modal" data-target="#myModal">
-            <i class="fa fa-sign-in fa-lg" style="color: white"></i>
-            <p>Dang nhap</p>
-        </a>
-        <a class="btn navbar-brand" href="#" data-toggle="modal" data-target="#myModal2">
-            <i class="fa fa-user-plus fa-lg" style="color: white"></i>
-            <p>Dang ki</p>
-        </a>
+        <% if(name != null) {%>
+            <a class="btn navbar-brand" href="#" data-toggle="modal" data-target="#myModal">
+                <i class="fas fa-user-circle fa-lg" style="color: white"></i>
+                <p>
+                    <%= name %>
+                </p>
+            </a>
+            <a class="btn navbar-brand" href="/logout">
+                <i class="fa fa-user-plus fa-lg" style="color: white"></i>
+                <p>Dang xuat</p>
+            </a>
+            <% } else {%>
+
+                    <a class="btn navbar-brand" href="#" data-toggle="modal" data-target="#myModal">
+                        <i class="fa fa-sign-in fa-lg" style="color: white"></i>
+                        <p>Dang nhap</p>
+                    </a>
+                    <a class="btn navbar-brand" href="#" data-toggle="modal" data-target="#myModal2">
+                        <i class="fa fa-user-plus fa-lg" style="color: white"></i>
+                        <p>Dang ki</p>
+                    </a>
+                    <% } %>
     </div>
 </div>

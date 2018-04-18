@@ -7,7 +7,10 @@ var logger = require('morgan');
 var mongoose = require('mongoose');
 var config = require("./config");
 var session = require('express-session');
-
+var passport = require('passport');
+var flash = require('connect-flash');
+var expressValidator = require('express-validator');
+var auth = require('./routes/auth');
 //connect db
 console.log(config.getDbConnectionString());
 mongoose.connect(config.getDbConnectionString());
@@ -26,9 +29,29 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(session({secret: 'mysecret', resave: false, saveUninitialized: false}))
+app.use(session({secret: 'mysecret', resave: true, saveUninitialized: false}))
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/auth', auth);
 
+app.use(expressValidator({
+  errorFormatter: function(param, msg, value) {
+      var namespace = param.split('.')
+      , root    = namespace.shift()
+      , formParam = root;
+
+    while(namespace.length) {
+      formParam += '[' + namespace.shift() + ']';
+    }
+    return {
+      param : formParam,
+      msg   : msg,
+      value : value
+    };
+  }
+}));
+app.use(flash());
 var setupController = require("./api/controller/setupController");
 setupController(app);
 app.use('/', trangchuRouter);

@@ -1,3 +1,4 @@
+const { checkSchema } = require('express-validator/check');
 var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
@@ -14,5 +15,6 @@ var userSchema = new Schema({
     },
     name: String
 });
+userSchema.statics.findOrCreate = require("find-or-create");
 var user = mongoose.model("User",userSchema);
 module.exports = user;

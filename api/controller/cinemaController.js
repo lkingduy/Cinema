@@ -9,7 +9,7 @@ cinemaController.list = function(req,res){
           console.log("Error:", err);
         }
         else {
-          res.render("../views/trangchu", {cinemas: cinemas});
+          res.render("../views/trangchu", {cinemas: cinemas,name : req.session.name});
         }
       });
 }
