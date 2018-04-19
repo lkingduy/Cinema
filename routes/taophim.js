@@ -1,9 +1,11 @@
 var express = require('express');
 var router = express.Router();
 var cinema = require('../api/controller/cinemaController');
+var user = require('../api/controller/signupController');
+var userLogin = require('../api/controller/loginController');
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('taophim', { title: 'Express',name:'Duy',person:{name:'hi',age:'1'} });
+  res.render('taophim', { title: 'Express' });
 });
 router.get('/trangchu', function (req, res,html) {
   res.sendFile(path.join(__dirname+'/trangchu.ejs'));

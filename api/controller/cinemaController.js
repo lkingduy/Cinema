@@ -20,13 +20,13 @@ cinemaController.show = function(req, res) {
         console.log("Error:", err);
       }
       else {
-        res.render("chitietphim", {cinema: cinema});
+        res.render("chitietphim", {cinema: cinema,name : req.session.name});
       }
     });
   };
 //add film -> create page
 cinemaController.create = function(req, res) {
-    res.render("taophim");
+    res.render("taophim",{name : req.session.name});
   };
 //add save new film
 cinemaController.save = function(req, res) {
@@ -35,7 +35,7 @@ cinemaController.save = function(req, res) {
     cinema.save(function(err) {
       if(err) {
         console.log(err);
-        res.render("trangchu");
+        res.render("trangchu",{name: req.session.name});
       } else {
         console.log("Successfully created an film.");
         // res.redirect("/trangchu"+cinema._id);

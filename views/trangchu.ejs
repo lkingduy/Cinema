@@ -12,18 +12,29 @@
 <%- include ./share/header.ejs %>
 <%- include ./share/modal.ejs %>
     <!-- show danh sach phim -->
-
-    <div class="margin-page">
-        <% for (var i = 0; i < cinemas.length;i ++) { %>
-          <div class="margin-film col-md-4">
-              <a class="show-phim" href="/chitietphim/<%= cinemas[i]._id %>">
-                  <img class="show-phim" src="<%= cinemas[i].image %>" />
-                  <div class="description-phim">
-                      <p><%= cinemas[i].name %>(<%= cinemas[i].timePublish %>)</p>
-                  </div>
-                </a>
-          </div>
-          <% } %>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 center-item">
+            <img src="/images/heading-left-line.png" style="line-height: 30px;">&nbsp;
+            <h1>Danh sach phim</h1>
+            <img src="/images/heading-right-line.png" style="line-height: 30px;">&nbsp;
+        </div>
+    </div>
+</div>
+    <div class="margin-page container">
+        <div class="row">
+                <% for (var i = 0; i < cinemas.length;i ++) { %>
+                    <div class="margin-film col-md-4 box">
+                        <a class="show-phim" href="/chitietphim/<%= cinemas[i]._id %>">
+                            <img class="show-phim" src="<%= cinemas[i].image %>" style="border: 2px solid gray;"/>
+                            <div class="mask center-item">
+                                <p><%= cinemas[i].name %>(<%= cinemas[i].timePublish %>)</p>
+                            </div>
+                          </a>
+                    </div>
+                    <% } %>
+        </div>
+     
     </div>
    
     <%- include ./share/footer.ejs %>      
