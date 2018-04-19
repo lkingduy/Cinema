@@ -12,33 +12,50 @@
    <%- include ./share/modal.ejs %>
 
 <!-- Chi tiet phim -->
-    <!-- <h1 style="text-align: center;margin-bottom: 50px;"><%= cinema.name %></h1>
+    <h1 style="margin-bottom: 50px; font-size: 40px" class="col-md-12 center-item">
+            <img src="/images/heading-left-line.png" style="line-height: 30px;">&nbsp;&nbsp;
+        <%= cinema.name %>
+        &nbsp;&nbsp;<img src="/images/heading-right-line.png" style="line-height: 30px;">
+    </h1>
     <div class="container">
-        <div class="col-md-4" style="overflow: hidden;">
-            <img src="<%= cinema.image %>" width="400" style="vertical-align: middle;">
-        </div>
-        <div class="col-md-8">
-            <div class="row">
-                <div class="col-md-10">
-                    <strong>The loai</strong>: Phim hoat hinh
-                </div>
-                <div class="col-md-10">
-                        <strong>Thời điểm phát hành</strong>:   11-2017
+        <div class="row">
+                <div class="col-md-4" style="overflow: hidden;">
+                        <img src="<%= cinema.image %>" width="400" style="vertical-align: middle;">
                     </div>
-                    <div class="col-md-12">
-                            <strong>Nội dung mô tả:</strong>
-                            <%= cinema.description %>
-                        </div>
-                        
-            </div>           
-        </div>                      
+                    <div class="col-md-offset-1 col-md-7">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <strong style="font-size: 25px;">Thể loại:</strong> <span style="font-size: 20px;">Phim hoat hinh</span>
+                            </div>
+                            <br/><br/>
+                            <div class="col-md-12">
+                                    <strong style="font-size: 25px;">Thời điểm phát hành:</strong><span style="font-size: 20px;">11-2017</span>   
+                                </div>
+                                <br/><br/>
+                                <div class="col-md-12">
+                                        <strong style="font-size: 25px;">Nội dung mô tả:</strong>
+                                        
+                                    </div>
+                                    <div class="col-md-12">
+                                            <span style="font-size: 20px;"><%= cinema.description %></span>
+                                    </div>
+                                    
+                        </div>           
+                    </div>
+        </div>
+                             
     </div>
+    <br/>
     <div class="center-item">
-            <button class="btn btn-success">Quay tro ve</button>
-    </div> -->
+            <button class="btn btn-success" onclick="goBack()">Quay tro ve</button>
+    </div>
     
       <!-- Footer -->
       <%- include ./share/footer.ejs %>
 </body>
 </html>
- 
+<script>
+        function goBack() {
+            window.history.back();
+        }
+        </script>

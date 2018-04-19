@@ -3,14 +3,13 @@ body {
 }
 
 a {
-  color: #00B7FF;
+  color: rgb(40, 96, 144);
 }
 .header {
   height: 70px;
-background-color: black;
+background-color: rgb(40, 96, 144);
 width: 100%;
 color: white;
-float: left;
 opacity: 0.7;
 }
 .navbar {
@@ -30,7 +29,7 @@ p {
 .my-title-header {
   margin-top: 40px;
   margin-bottom: 40px;
-  color: rgb(0, 160, 0);
+  color: rgb(40, 96, 144);
   letter-spacing: 1px;
   font-family: 'Paytone One', sans-serif;
 }
@@ -65,7 +64,7 @@ p {
 .my-footer {
   padding: 13px;
   color: white;
-  background-color: black;
+  background-color: rgb(40, 96, 144);
   font-family: 'Quicksand', sans-serif;
   font-size: 1.1em;
   margin-top: 50px;
@@ -109,7 +108,7 @@ p {
   opacity: 1;
 } */
 .face-btn{
-  background-color: #00B7FF;
+  background-color: rgb(40, 96, 144);
 }
 .google-btn{
   background-color: crimson;
@@ -129,7 +128,7 @@ p {
 /* slideshow */
 .slide-opacity{
   width: 100%;
-  height: 409.5px;
+  height: 500px;
   background-color:black;
   opacity: 0.4;
   position: absolute;
@@ -138,11 +137,11 @@ p {
 .slide-show {
   position: relative;
   width: 100%;
-  height: 400px;
+  height: 500px;
 }
 .slide-show img {
   width: 100%;
-  height: 400px;
+  height: 500px;
   position: absolute;
   top: 0;
   left: 0;
@@ -197,7 +196,7 @@ p {
 .mask {
   width: 358px;
   height: 50px;
-  background-color: slategray;
+  background-color: rgb(40, 96, 144);
   position: absolute;
   top:250px;
   left: 0;
