@@ -1,108 +1,104 @@
 <!-- header + navbar -->
-<div class="header container-fluid" style="margin-bottom: 550px">
+<div class="header container-fluid">
+    <!-- style="margin-bottom: 400px" -->
     <div class="row">
-        <a class="col-md-offset-1 col-md-2" href="/" style="text-decoration: none;color: white">
-            <h1 style="margin-top: 12px">Cinema</h1>           
-        </a>                  
-            <div class="col-md-3">
-                <form action="" class="navbar-brand">
-                    <input class="form-input" type="text" placeholder="Search here"/>
-                    <button type="submit" class="btn">
-                        <i class="fas fa-search">                      
-                        </i>
-                    </button>                  
-                </form>
-            </div>
-            <% if(name != null) {%>
+        <a class="col-md-1" href="/" style="text-decoration: none;">
+            <img src="/images/logo.png" width="100" height="70">
+        </a>
 
-                <div class="col-md-offset-1 col-md-5">                  
-                                <a class="btn navbar-brand" href="/taophim/create" style="padding: 20px 20px">
-                                    <i class="fa fa-upload fa-lg" style="color: white"></i>
-                                    <p>Tao Phim moi</p>
-                                </a>
-                        <a class="btn navbar-brand" href="#" data-toggle="modal" data-target="#myModal" style="padding: 20px 20px">
-                            <i class="fa fa-sign-in fa-lg" style="color: white"></i>
-                            <p><%= name %></p>
-                        </a>
-                        <a class="btn navbar-brand" href="/logout" style="padding: 20px 20px">
-                            <i class="fa fa-user-plus fa-lg" style="color: white"></i>
+        <a class=" col-md-2" href="/" style="text-decoration: none;color: white">
+
+            <h1 style="margin-top: 12px;font-family: 'Black Han Sans';">Cinema</h1>
+        </a>
+        <div class="col-md-4">
+            <form action="" class="navbar-brand">
+                <input class="form-input " type="text" placeholder="Tìm kiếm..." size="40" />
+                <button type="submit" class="btn">
+                    <i class="fas fa-search">
+                    </i>
+                </button>
+            </form>
+        </div>
+        <% if(name != null) {%>
+
+            <div class="col-md-offset-1 col-md-4">
+                <a class="btn navbar-brand" href="/taophim/create" style="padding: 20px 20px">
+                    <i class="fa fa-upload fa-lg" style="color: white"></i>
+                    <p style="font-family: 'Black Han Sans';">Tạo phim mới</p>
+                </a>
+                <div class="btn-group">
+                    <a class="btn navbar-brand dropdown-toggle" href="" data-toggle="dropdown" style="padding: 20px 20px">
+                        <i class="far fa-user fa-lg" style="color: white"></i>
+                        <p style="font-family: 'Black Han Sans';">
+                            <%= name %>&nbsp;
+                                <span class="caret"></span>
+                        </p>
+                    </a>
+
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a tabindex="-1" href="/profile" style="font-family: 'Black Han Sans';">Thiết lập hồ sơ</a>
+                        </li>
+                        <li>
+                            <a tabindex="-1" href="/filmProfile/" style="font-family: 'Black Han Sans';">Tùy chỉnh phim</a>
+                        </li>
+                        <li>
+                            <a tabindex="-1" href="#" style="font-family: 'Black Han Sans';">Thay đổi mật khẩu</a>
+                        </li>
+                        <li data-toggle="modal" data-target="#logout1">
+                            <a href="#" style="font-family: 'Black Han Sans';">Đăng xuất</a>
+                        </li>
+                    </ul>
+                </div>
+
+
+
+                <!-- <a class="btn navbar-brand" href="/logout" style="padding: 20px 20px">
+                            <i class="fas fa-sign-out-alt fa-lg" style="color: white"></i>
                             <p>Dang Xuat</p>
-                        </a>
-                    </div>
-                <% } else { %>
-                <div class="col-md-offset-3 col-md-3">
-                        <a class="btn navbar-brand" href="#" data-toggle="modal" data-target="#myModal" style="padding: 20px 20px">
-                            <i class="fa fa-sign-in fa-lg" style="color: white"></i>
-                            <p>Dang nhap</p>
-                        </a>
-                        <a class="btn navbar-brand" href="#" data-toggle="modal" data-target="#myModal2" style="padding: 20px 20px">
-                            <i class="fa fa-user-plus fa-lg" style="color: white"></i>
-                            <p>Dang ki</p>
-                        </a>
-                    </div>
+                        </a> -->
+            </div>
+            <% } else { %>
+                <div class="col-md-offset-2 col-md-3">
+                    <a class="navbar-brand" href="#" data-toggle="modal" data-target="#myModal" style="padding: 20px 20px">
+                        <i class="fa fa-sign-in fa-lg" style="color: white"></i>
+                        <p style="font-family: 'Black Han Sans';">Đăng nhập</p>
+                    </a>
+                    <a class=" navbar-brand" href="#" data-toggle="modal" data-target="#myModal2" style="padding: 20px 20px">
+                        <i class="fa fa-user-plus fa-lg" style="color: white"></i>
+                        <p style="font-family: 'Black Han Sans';">Đăng ký</p>
+                    </a>
+                </div>
                 <% } %>
 
     </div>
 
-    <div>
+    <!-- <div>
         <div class="row">
-   <!-- Slide  -->
-   <div class="slide-show">
-    <img src="/images/goku_all_god_transformations_limit_breaker_2017_by_windyechoes-dbl08q0.png">
-     <img src="/images/kousei_x_kaori_a_bittersweet_goodbye_by_phantastic_crafts-d9j04cd.jpg">
-     <img src="/images/maxresdefault.jpg">
-     <img src="/images/star-war.jpg">
-     <img src="/images/the-lord-of-the-rings--the-two-towers_37531357638471.jpg"> 
-     </div>
-     <div class="slide-opacity">
+            
+            <div class="slide-show">
+                <img src="/images/goku_all_god_transformations_limit_breaker_2017_by_windyechoes-dbl08q0.png">
+                <img src="/images/kousei_x_kaori_a_bittersweet_goodbye_by_phantastic_crafts-d9j04cd.jpg">
+                <img src="/images/maxresdefault.jpg">
+                <img src="/images/star-war.jpg">
+                <img src="/images/the-lord-of-the-rings--the-two-towers_37531357638471.jpg">
+            </div>
+            <div class="slide-opacity">
 
-     </div>
+            </div>
         </div>
-    </div>
- 
+    </div> -->
+
 </div>
 
-
-
-
- <!-- Navbar -->
-<!-- <div class="navbar" style="padding: 0px 40px">
-
-    <div>
-        <a class="btn navbar-brand" href="/">
-            <i class="fa fa-home" style="color: white"></i>
-        </a>
-        <a class="btn navbar-brand" href="#">
-            <i class="fa fa-arrow-circle-left" style="color: white"></i>
-        </a>
-    </div>
-
-        <% if(name != null) {%>
-            <div style="float: right;">
-                    <a class="btn navbar-brand" href="/taophim">
-                        <i class="fa fa-upload fa-lg" style="color: white"></i>
-                        <p>Tao Phim moi</p>
-                    </a>
-            <a class="btn navbar-brand" href="#" data-toggle="modal" data-target="#myModal">
-                <i class="fas fa-user-circle fa-lg" style="color: white"></i>
-                <p>
-                    <%= name %>
-                </p>
-            </a>
-            <a class="btn navbar-brand" href="/logout">
-                <i class="fa fa-user-plus fa-lg" style="color: white"></i>
-                <p>Dang xuat</p>
-            </a>
-            <% } else {%>
-
-                    <a class="btn navbar-brand" href="#" data-toggle="modal" data-target="#myModal">
-                        <i class="fa fa-sign-in fa-lg" style="color: white"></i>
-                        <p>Dang nhap</p>
-                    </a>
-                    <a class="btn navbar-brand" href="#" data-toggle="modal" data-target="#myModal2">
-                        <i class="fa fa-user-plus fa-lg" style="color: white"></i>
-                        <p>Dang ki</p>
-                    </a>
-                    <% } %>
-    </div>
-</div> -->
+<!-- CLick submenu -->
+<script>
+    $(document).ready(function () {
+        $('.dropdown-submenu a.test').on("click", function (e) {
+            $(this).next('ul').toggle();
+            e.stopPropagation();
+            e.preventDefault();
+        });
+    });
+</script>
+<!-- logout -->

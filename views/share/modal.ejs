@@ -1,131 +1,226 @@
 <!-- Modal Dang nhap-->
 <div id="myModal" class="modal fade" role="dialog">
-    <div class="modal-dialog">
-  
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h1 style="text-align: center">Dang nhap</h1>
-        </div>
-        <div class="modal-body">
-          <form class="form-horizontal" action="/login" method="POST">
-                  <div class="form-group">
-                          <label class="control-label col-sm-2" for="email">Email:</label>
-                          <div class="col-sm-10">
-                            <input type="email" class="form-control" id="email" name="email" placeholder="Enter email">
-                          </div>
-                        </div>
-                        <div class="form-group">
-                          <label class="control-label col-sm-2" for="password">Password:</label>
-                          <div class="col-sm-10"> 
-                            <input type="password" class="form-control" id="password" name="password" placeholder="Enter password">
-                          </div>
-                        </div>
-                        <div class="form-group"> 
-                          <div class="col-sm-offset-2 col-sm-10">
-                            <div class="checkbox">
-                              <label><input type="checkbox"> Remember me</label>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="form-group"> 
-                              <div class="col-sm-offset-5 col-sm-10">
-                                <button type="submit" class="btn btn-success">Dang nhap</button>
-                              </div>
-                            </div>
-                          <div class="form-group">
-                              <div class="col-sm-offset-3 col-sm-10">
-                                  <a href="#" style="text-decoration: none">Quen mat khau<i class="fa fa-question-circle-o" aria-hidden="true"></i></a>&nbsp;&nbsp;
-                                  Ban chua la thanh vien?<a href="#" style="text-decoration: none"><span style="color: steelblue">Dang ki</span></a>
-                              </div>
-                          </div>  
-                        
-          </form>
-        </div>
-        <div class="modal-footer">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <a class="close" data-dismiss="modal" href="#">&times;</a>
+        <h1 style="text-align: center;color: rgb(40, 96, 144);">Đăng nhập</h1>
+      </div>
+      <div class="modal-body">
+        <form class="form-horizontal" action="/login" method="POST">
+          <div class="form-group">
+            <!-- <label class="control-label col-sm-2" for="email"">Email:</label> -->
+            <div class="col-sm-offset-2 col-sm-8">
+              <input type="email" class="form-control" id="email" name="email" placeholder="Nhập email">
+            </div>
+          </div>
+          <div class="form-group">
+            <!-- <label class="control-label col-sm-2" for="password">Mật khẩu:</label> -->
+            <div class="col-sm-offset-2 col-sm-8">
+              <input type="password" class="form-control" id="password" name="password" placeholder="Nhập mật khẩu">
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10n container">
+              <div class="checkbox row">
+                <div class="col-sm-2">
+                  <label>
+                    <input type="checkbox"> Nhớ mật khẩu</label>
+                </div>
+                <div class="col-sm-2" style="margin-left: 70px;">
+                  <i class="fa fa-question-circle-o" aria-hidden="true"></i>&nbsp;
+                  <a href="#" style="text-decoration: none">Quên mật khẩu</a>&nbsp;&nbsp;
+                </div>
+              </div>
+
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <button type="submit" class="btn btn-primary" style="width: 368px;">Đăng nhập</button>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-offset-4 col-sm-10">
+
+              Bạn chưa là thành viên? &nbsp;
+              <a href="#" style="text-decoration: none">
+                <span style="color: steelblue" data-toggle="modal" data-target="#myModal2" data-dismiss="modal">Đăng ký</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="container">
+              <div class="row">
+                <a class="col-sm-offset-1 col-md-2" href="/auth/facebook">
+                  <img src="/images/face.png" width="175" height="40" />
+                </a>
+                <a class=" col-md-2">
+                  <img src="/images/login-google.png" width="175" height="40" style="border-radius: 2px" />
+                </a>
+              </div>
+
+            </div>
+          </div>
+
+        </form>
+      </div>
+      <!-- <div class="modal-footer">
                       <div class="container">
                           <div class="row">
-                                  <a class="btn col-sm-offset-1 col-md-2 face-btn" href="/auth/facebook">
-                                          <span style="color: white">Dang nhap bang facebook</span> 
+                                  <a class="col-sm-offset-1 col-md-2" href="/auth/facebook">
+                                       <img src="/images/face.png" width="175" height="40"/>   
                                   </a>
-                                      <a class="btn col-sm-offset-1 col-md-2 google-btn">
-                                              <span style="color: white">Dang nhap bang google+</span>
+                                      <a class=" col-md-2">
+                                          <img src="/images/login-google.png" width="175" height="40" style="border-radius: 2px"/>
                                       </a>
                           </div>
                               
                             </div>                
-        </div>
-      </div>
-  
+        </div> -->
     </div>
+
   </div>
-  <!-- Modal Dang ky-->
-  <div id="myModal2" class="modal fade" role="dialog">
-          <div class="modal-dialog">
-        
-            <!-- Modal content-->
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h1 style="text-align: center">Dang ky</h1>
-              </div>
-              <div class="modal-body">
-                <form class="form-horizontal" action="/save" method="POST">
-                        <div class="form-group">
-                                <label class="control-label col-sm-4" for="name">Ten nguoi dung:</label>
-                                <div class="col-sm-8">
-                                  <input type="text" class="form-control" id="name" name="name" placeholder="Enter name" required>
-                                </div>
-                              </div>
-                              <div class="form-group">
-                                <label class="control-label col-sm-4" for="email">Dia chi email:</label>
-                                <div class="col-sm-8"> 
-                                  <input type="email" class="form-control" id="email" name="email" placeholder="Enter email" required>
-                                </div>
-                              </div>
-                              <div class="form-group">
-                                      <label class="control-label col-sm-4" for="password">Mat khau:</label>
-                                      <div class="col-sm-8">
-                                        <input type="password" class="form-control" id="password" name="password" placeholder="Enter password" required>
-                                      </div>
-                                    </div>
-                                    <div class="form-group">
-                                          <label class="control-label col-sm-4" for="repassword">Xac nhan mat khau:</label>
-                                          <div class="col-sm-8">
-                                            <input type="password" class="form-control" id="repassword" name="repassword" placeholder="Confirm password" required>
-                                          </div>
-                                        </div>
-                              <div class="form-group"> 
-                                    <div class="col-sm-offset-5 col-sm-10">
-                                      <button type="submit" class="btn btn-success"><i class="fa fa-user-plus fa-lg" style="color: white"></i>Tao tai khoan</button>
-                                    </div>
-                                  </div>
-                                <div class="form-group">
-                                    <div class="col-sm-offset-4 col-sm-10">
-                                        Ban da la thanh vien?<a href="#" style="text-decoration: none"><span style="color: steelblue">Dang nhap</span></a>
-                                    </div>
-                                </div>  
-                              
-                </form>
-              </div>
+</div>
+<!-- Modal Dang ky-->
+<div id="myModal2" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h1 style="text-align: center;color: rgb(40, 96, 144);">Đăng ký</h1>
+      </div>
+      <div class="modal-body">
+        <form class="form-horizontal" id="sign-up-form" method="POST">
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-8">
+              <input type="text" class="form-control" id="name" name="name" placeholder="Nhập tên" required>
             </div>
-        
           </div>
-        </div>
-        <!-- script validation -->
-        <script>
-                var password = document.getElementById("password")
-        , confirm_password = document.getElementById("repassword");
-      
-      function validatePassword(){
-        if(password.value != confirm_password.value) {
-          confirm_password.setCustomValidity("Passwords Don't Match");
-        } else {
-          confirm_password.setCustomValidity('');
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-8">
+              <input type="email" class="form-control" id="email" name="email" placeholder="Nhập email" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-8">
+              <input type="password" class="form-control" id="password" name="password" placeholder="Nhập mật khẩu" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-8">
+              <input type="password" class="form-control" id="repassword" name="repassword" placeholder="Xác nhận mật khẩu" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-8">
+              <button type="submit" id="sign-up-btn" class="btn btn-primary" style="width: 368px;">
+                <i class="fa fa-user-plus fa-lg" style="color: white;"></i>Tạo tài khoản</button>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-offset-4 col-sm-10">
+              Bạn đã là thành viên?&nbsp;
+              <a href="#" style="text-decoration: none">
+                <span style="color: steelblue" data-toggle="modal" data-target="#myModal" data-dismiss="modal">Đăng nhập</span>
+              </a>
+
+            </div>
+          </div>
+
+        </form>
+      </div>
+    </div>
+
+  </div>
+</div>
+<!-- script validation -->
+<script>
+  var password = document.getElementById("password")
+    , confirm_password = document.getElementById("repassword");
+
+  function validatePassword() {
+    if (password.value != confirm_password.value) {
+      confirm_password.setCustomValidity("Passwords Don't Match");
+    } else {
+      confirm_password.setCustomValidity('');
+    }
+  }
+
+  password.onchange = validatePassword;
+  confirm_password.onkeyup = validatePassword;
+</script>
+
+<!-- check email exist -->
+<script>
+  $(document).ready(function () {
+    $('#sign-up-btn').on('click', function () {
+      var formSignUp = $('#sign-up-form')
+      var data = getFormData(formSignUp)
+      $.ajax({
+        url: '/save',
+        type: 'POST',
+        data: data,
+        success: function (res) {
+          console.log(res);
+
+          if (res.status == 403) {
+            console.log(res)
+            alert(res.errorMessage)
+            
+          } else {
+            window.location.href='/';
+          }
         }
-      }
-      
-      password.onchange = validatePassword;
-      confirm_password.onkeyup = validatePassword;
-        </script>
+      });
+    })
+  })
+
+  function getFormData($form) {
+    var unindexedArray = $form.serializeArray()
+    var indexedArray = {}
+    $.map(unindexedArray, function (n, i) {
+      indexedArray[n['name']] = n['value']
+    })
+    return indexedArray
+  }
+
+</script>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="logout1" role="dialog">
+  <div class="modal-dialog modal-sm">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Đăng xuất</h4>
+      </div>
+      <div class="modal-body center-item">
+        <strong style="font-size: 20px;">Bạn muốn đăng xuất?</strong>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" style="float: left">Không</button>
+        <button class="btn btn-primary" data-dismiss="modal" id="logout2">Có</button>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+<script>
+  $(document).ready(function () {
+    $('#logout2').on("click", function (e) {
+      window.location.href = "/logout";
+    });
+  });
+</script>

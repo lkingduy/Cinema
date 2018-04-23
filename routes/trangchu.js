@@ -3,6 +3,7 @@ var router = express.Router();
 var cinema = require('../api/controller/cinemaController');
 var user = require('../api/controller/signupController');
 var userLogin = require('../api/controller/loginController');
+var film = require('../api/controller/filmController');
 // var csurf = require('csurf');
 // var csurfProtection = csurf();
 // router.use(csurfProtection);
@@ -20,7 +21,7 @@ router.get('/create', function(req, res) {
   user.create(req, res);
 });
 // Save 
-router.post('/save', function(req, res) {
+router.post('/save', function(req, res,next) {
   user.save(req, res);
 });
 router.post('/',function(req,res,next){
@@ -31,6 +32,9 @@ router.post('/login',function(req,res,next){
 });
 router.get('/logout',function(req,res){
   userLogin.logout(req,res);
+});
+router.get('/filmProfile', function(req, res) {
+  film.list(req, res);
 });
 /* GET users listing. */
 router.get('/', ensureAuthenticated, function(req, res, next) {

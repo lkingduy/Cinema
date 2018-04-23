@@ -9,7 +9,8 @@ var cinemaSchema = new Schema({
     description: String,
     timePublish: String,
     image: String,
-    userCreated: String
+    userCreated: String,
+    email:String,
 });
 
 var phim = mongoose.model("Cinema", cinemaSchema);

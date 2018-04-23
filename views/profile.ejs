@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+
+    </title>
+    <%- include ./share/head.ejs %>
+</head>
+
+<body>
+    <!-- header + slide -->
+    <%- include ./share/header.ejs %>
+        <%- include ./share/modal.ejs %>
+
+        <div class="container show-submenu">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 style="margin-bottom: 50px; font-size: 40px;" class="col-md-12 center-item">
+                            <img src="/images/heading-left-line.png" style="line-height: 30px;">&nbsp;&nbsp;
+                            <span style="color:rgb(40, 96, 144);">Profile của
+                                <%= name %>
+                            </span>
+                            &nbsp;&nbsp;
+                            <img src="/images/heading-right-line.png" style="line-height: 30px;">
+                        </h1>
+                    </div>
+                </div>
+
+            </div>
+            <!-- profile -->
+            <div class="container">
+                    <form action="/profile/saveProfile" method="POST">
+                <div class="row">
+                    <% if(users.avatar != null) { %>
+                        <div class="col-md-4">
+                                <input type="hidden" name="id" value="<%= users.id %>"/>
+                                <img src="<%= users.avatar %>" class="img-upload" id="blah" width="250" height="250"/>
+    
+                                <label  class="btn btn-default text-center center-item" for="exampleFormControlFile1" style="margin-left: 50px;">
+                                    Chọn ảnh đại diện</label>
+                                <input type="file" class="form-control-file hide" id="exampleFormControlFile1" name="avatar" onchange="readURL(this);">
+                        </div>
+                        <% } else {%>
+                            <div class="col-md-4">
+                                    <input type="hidden" name="id" value="<%= users.id %>"/>
+                                    <img src="/images/homeshow/profile.jpg" class="img-upload" id="blah" width="250" height="250"/>
+        
+                                    <label  class="btn btn-default text-center center-item" for="exampleFormControlFile1" style="margin-left: 50px;">
+                                        Chọn ảnh đại diện</label>
+                                    <input type="file" class="form-control-file hide" id="exampleFormControlFile1" name="avatar" onchange="readURL(this);">
+                            </div>
+                            <% } %>
+                   
+                    <div class="col-md-8 profile-form">
+                        
+                            <div class="form-group">
+                                    <i class="fa fa-envelope fa-lg"></i>&nbsp;&nbsp;<label>Email</label>
+                                <input type="text" class="form-control" value="<%= users.email %>" disabled="disabled" name="email"/>
+                            </div>
+                            <div class="form-group">
+                                    <i class="fa fa-address-card fa-lg"></i>&nbsp;&nbsp;<label>Name</label>
+                                <input type="text" class="form-control" value="<%= users.name %>" name="name"/>
+                            </div>
+                            <div class="form-group">
+                                    <i class="fa fa-phone-square fa-lg"></i>&nbsp;&nbsp;<label>Phone</label>
+                                    <input type="text" class="form-control" value="<%= users.phone %>" name="phone"/>
+                                </div>
+                            <div class="form-group">
+                                <button class="btn btn-primary" type="submit">Save</button>
+                            </div>
+                        
+                    </div>
+                </div>
+            </form>
+            </div>
+            
+            <!-- <div class="center-item">
+                <form class="profile-form" action="/saveProfile" method="POST">
+                    <div class="form-group">
+                        <label>
+                            <p>Email</p>
+                        </label>
+                        <input type="text" class="form-control" value="<%= users.email %>" name="email"/>
+
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            <p>Tên người dùng</p>
+                        </label>
+                        <input type="text" class="form-control" value=" <%= name %>" name="name"/>
+
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            <p>Ảnh đại diện</p>
+                        </label>
+                        <div class="text-center ">
+
+                                <img src="/images/image.png" class="img-upload" id="blah" width="122" height="120" style="float: left;" />
+                            <label  class="btn btn-default text-center center-item" for="exampleFormControlFile1" style="position: absolute;left: 700px;top: 820px;">
+                                Chọn ảnh đại diện</label>
+                            <input type="file" class="form-control-file hide" id="exampleFormControlFile1" name="avatar" onchange="readURL(this);">
+                        </div>
+
+                    </div>
+                    <div class="form-group clearfix"></div>
+                    <div class="form-group clearfix"></div>
+                    <div class="form-group clearfix"></div>
+                    <div class="form-group center-item">
+                        <button type="submit" class="btn btn-default">Lưu thông tin</button>
+                    </div>
+                </form>
+            </div> -->
+
+            <!-- footer -->
+            <%- include ./share/footer.ejs %>
+</body>
+
+</html>
+
+<script>
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#blah')
+                    .attr('src', e.target.result)
+                    .width(250)
+                    .height(250)
+                    .css('border-radius');
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>

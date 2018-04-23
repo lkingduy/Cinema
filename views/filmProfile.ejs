@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+
+    </title>
+    <%- include ./share/head.ejs %>
+</head>
+<body>
+        <%- include ./share/header.ejs %>
+        <%- include ./share/modal.ejs %>
+
+        <!-- profile -->
+ <!-- show danh sach phim -->
+ <div class="container show-submenu">
+        <div class="row">
+            <div class="col-md-12 center-item">
+                <img src="/images/heading-left-line.png" style="line-height: 30px;">&nbsp;&nbsp;
+                <h1 style="color: rgb(40, 96, 144);">Danh sách phim của <%= name %></h1>
+                &nbsp;&nbsp;<img src="/images/heading-right-line.png" style="line-height: 30px;">
+            </div>
+        </div>
+    </div>
+
+<div class="margin-page container">
+    <div class="row">
+            <% for (var i = 0; i < cinemas.length;i ++) { %>
+                <div class="margin-film col-md-3 box">
+                    <a class="show-phim" href="/updatephim/<%= cinemas[i]._id %>">
+                        <img class="show-phim" src="<%= cinemas[i].image %>" width="230"/>
+                                <div class="mask center-item">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                    <p style="font-weight: bold"><%= cinemas[i].name %></p>
+                                            </div>
+                                            <br/>
+                                            <div class="col-md-12">
+                                                    <p style="font-weight: bold"><%= cinemas[i].userCreated %></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                        
+                                        
+                                    </div>
+                      
+                      </a>
+                </div>
+                <% } %>
+    </div>
+
+</div>
+        <!-- footer -->
+        <%- include ./share/footer.ejs %>
+</body>
+</html>

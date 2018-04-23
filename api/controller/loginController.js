@@ -25,6 +25,8 @@ loginController.login = function(req,res){
     }
     else{
       req.session.name = user.name;
+      req.session.id = user._id;
+      console.log(req.session.id);
       res.redirect('/');
       
     }

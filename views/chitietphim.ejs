@@ -12,7 +12,7 @@
    <%- include ./share/modal.ejs %>
 
 <!-- Chi tiet phim -->
-    <h1 style="margin-bottom: 50px; font-size: 40px" class="col-md-12 center-item">
+    <h1 style="margin-bottom: 50px; font-size: 40px;color: rgb(40, 96, 144);" class="col-md-12 center-item">
             <img src="/images/heading-left-line.png" style="line-height: 30px;">&nbsp;&nbsp;
         <%= cinema.name %>
         &nbsp;&nbsp;<img src="/images/heading-right-line.png" style="line-height: 30px;">
@@ -25,13 +25,19 @@
                     <div class="col-md-offset-1 col-md-7">
                         <div class="row">
                             <div class="col-md-12">
-                                <strong style="font-size: 25px;">Thể loại:</strong> <span style="font-size: 20px;">Phim hoat hinh</span>
+                                <strong style="font-size: 25px;">Thể loại:</strong> <span style="font-size: 20px;">
+                                   Phim hoạt hình
+                                </span>
                             </div>
                             <br/><br/>
                             <div class="col-md-12">
-                                    <strong style="font-size: 25px;">Thời điểm phát hành:</strong><span style="font-size: 20px;">11-2017</span>   
+                                    <strong style="font-size: 25px;">Thời điểm phát hành:</strong><span style="font-size: 20px;">11 -2018</span>   
                                 </div>
                                 <br/><br/>
+                                <div class="col-md-12">
+                                        <strong style="font-size: 25px;">Người tạo:</strong><span style="font-size: 20px;"><%= cinema.userCreated %></span>   
+                                    </div>
+                                    <br/><br/>
                                 <div class="col-md-12">
                                         <strong style="font-size: 25px;">Nội dung mô tả:</strong>
                                         
@@ -47,7 +53,7 @@
     </div>
     <br/>
     <div class="center-item">
-            <button class="btn btn-success" onclick="goBack()">Quay tro ve</button>
+            <button class="btn btn-primary" onclick="goBack()">Quay trở về</button>
     </div>
     
       <!-- Footer -->

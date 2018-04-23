@@ -11,14 +11,24 @@ var passport = require('passport');
 var flash = require('connect-flash');
 var expressValidator = require('express-validator');
 var auth = require('./routes/auth');
+var existence = require('email-existence');
+var async = require('async');
+var crypto = require('crypto');
+var nodemailer = require('nodemailer');
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
 //connect db
 console.log(config.getDbConnectionString());
 mongoose.connect(config.getDbConnectionString());
 require('./api/models/cinemaModel');
+require('./api/models/userModel');
+require('./api/models/user');
 var indexRouter = require('./routes/index');
 var taophimRouter = require('./routes/taophim');
 var trangchuRouter = require('./routes/trangchu');
 var chitietphimRouter = require('./routes/chitietphim');
+var profileRouter = require('./routes/profile');
+var filmProfileRouter = require('./routes/filmProfile');
 var app = express();
 var port = process.env.PORT || 3000;
 // view engine setup
@@ -57,7 +67,8 @@ setupController(app);
 app.use('/', trangchuRouter);
 app.use('/taophim', taophimRouter);
 app.use('/chitietphim',chitietphimRouter);
-
+app.use('/profile',profileRouter);
+app.use('/filmProfile',filmProfileRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

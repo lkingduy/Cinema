@@ -30,8 +30,14 @@ cinemaController.create = function(req, res) {
   };
 //add save new film
 cinemaController.save = function(req, res) {
+    // var month = document.getElementById("film-month");
+    // var year = document.getElementById("film-year");
+    // var filmCategory = document.getElementById("film-category");
     var cinema = new Cinema(req.body);
-    cinema.image = "/images/"+ cinema.image; 
+    cinema.image = "/images/homeshow"+ cinema.image;
+    // cinema.category = filmCategory.value;
+    cinema.timePublish = Date.now; 
+    cinema.userCreated = req.session.name; 
     cinema.save(function(err) {
       if(err) {
         console.log(err);
@@ -44,25 +50,38 @@ cinemaController.save = function(req, res) {
     });
   };
 //edit by id
-// cinemaController.edit = function(req, res) {
-//     Cinema.findOne({_id: req.params.id}).exec(function (err, cinema) {
-//       if (err) {
-//         console.log("Error:", err);
-//       }
-//       else {
-//         res.render("../views/trangchu", {cinema: cinema});
-//       }
-//     });
-//   };  
+cinemaController.edit = function(req, res) {
+    Cinema.findOne({_id: req.params.id}).exec(function (err, cinema) {
+      if (err) {
+        console.log("Error:", err);
+      }
+      else {
+        res.render("../views/trangchu", {cinema: cinema});
+      }
+    });
+  };  
   //add update 
-//   cinemaController.update = function(req, res) {
-//     Cinema.findByIdAndUpdate(req.params.id, { $set: { name: req.body.name, category: req.body.category, description: req.body.description,timePublish: Date.now,image : req.body.image,userCreated : req.body.userCreated}}, { new: true }, function (err, cinema) {
-//       if (err) {
-//         console.log(err);
-//         res.render("../views/edit", {cinema: req.body});
-//       }
-//       res.redirect("/views/trangchu"+employee._id);
-//     });
-//   };
+  cinemaController.update = function(req, res) {
+    Cinema.findByIdAndUpdate(req.params.id, { $set: { name: req.body.name, category: req.body.category, description: req.body.description,timePublish: Date.now,image : req.body.image,userCreated : req.body.userCreated}}, { new: true }, function (err, cinema) {
+      if (err) {
+        console.log(err);
+        res.render("../views/edit", {cinema: req.body});
+      }
+      res.redirect("/views/trangchu"+employee._id);
+    });
+  };
+  //delete
+cinemaController.delete = function(req, res) {
+  Cinema.remove({_id: req.params.id}, function(err) {
+    if(err) {
+      console.log(err);
+    }
+    else {
+      console.log("Film deleted!");
+      res.redirect("/");
+    }
+  });
+};
 
 module.exports = cinemaController;
+
