@@ -20,7 +20,8 @@ cinemaController.show = function(req, res) {
         console.log("Error:", err);
       }
       else {
-        res.render("chitietphim", {cinema: cinema,name : req.session.name});
+        console.log(cinema.name);
+        res.render("../views/chitietphim", {cinema: cinema,name : req.session.name});
       }
     });
   };
@@ -33,10 +34,31 @@ cinemaController.save = function(req, res) {
     // var month = document.getElementById("film-month");
     // var year = document.getElementById("film-year");
     // var filmCategory = document.getElementById("film-category");
+
+    if (!req.files)
+    return res.status(400).send('No files were uploaded.');
+ 
+  // The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file
+  let sampleFile = req.files.image;
+
+  var imgEnd = sampleFile.name.split('.').pop();
+  var imgName = Date.now() + '.' + imgEnd ;
+  console.log(sampleFile);
+ console.log(__dirname);
+  // Use the mv() method to place the file somewhere on your server
+ 
+    
+  sampleFile.mv(__dirname +'/../../public/images/homeshow/' + imgName, function(err) {
+    if (err)
+      return res.status(500).send(err);
+  });
+    
+    console.log(sampleFile.name);
+    console.log(req.body);
     var cinema = new Cinema(req.body);
-    cinema.image = "/images/homeshow"+ cinema.image;
+    cinema.image = "/images/homeshow/" + imgName;
     // cinema.category = filmCategory.value;
-    cinema.timePublish = Date.now; 
+    cinema.timePublish = Date.now(); 
     cinema.userCreated = req.session.name; 
     cinema.save(function(err) {
       if(err) {
@@ -78,7 +100,7 @@ cinemaController.delete = function(req, res) {
     }
     else {
       console.log("Film deleted!");
-      res.redirect("/");
+      res.redirect("/filmProfile");
     }
   });
 };

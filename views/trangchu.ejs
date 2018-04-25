@@ -3,49 +3,231 @@
 
 <head>
     <title>
-        
+
     </title>
     <%- include ./share/head.ejs %>
 </head>
-<body>
- 
-<%- include ./share/header.ejs %>
-<%- include ./share/modal.ejs %>
-<script src="/scripts/searchUser.js"></script>
-    <!-- show danh sach phim -->
-     
 
-    <div class="margin-page container">
+<body>
+<!-- header + navbar -->
+<div class="header container-fluid" style="margin-bottom: 100px">
+    
         <div class="row">
-                <% for (var i = 0; i < cinemas.length;i ++) { %>
-                    <div class="margin-film col-md-3 box">
-                        <a class="show-phim" href="/chitietphim/<%= cinemas[i]._id %>">
-                            <img class="show-phim" src="<%= cinemas[i].image %>" width="230"/>
-                                    <div class="mask center-item">
-                                        <div class="container">
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                        <p style="font-weight: bold"><%= cinemas[i].name %></p>
-                                                </div>
-                                                <br/>
-                                                <div class="col-md-12">
-                                                        <p style="font-weight: bold"><%= cinemas[i].userCreated %></p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                            
-                                            
-                                        </div>
-                          
-                          </a>
+            <a class="col-md-1" href="/" style="text-decoration: none;">
+                <img src="/images/logo.png" width="100" height="70">
+            </a>
+    
+            <a class=" col-md-2" href="/" style="text-decoration: none;color: white">
+    
+                <h1 style="margin-top: 12px;font-family: 'Black Han Sans';">Cinema</h1>
+            </a>
+            <div class="col-md-4">
+                <div class="navbar-brand dropdown">
+                    <input class="form-input " type="text" id="myInput" placeholder="Tìm kiếm..." size="40" onclick="myFunction()" onkeyup="filterFunction()"/>
+                    <button type="submit" class="btn">
+                        <i class="fas fa-search">
+                        </i>
+                    </button>
+                    <div id="myDropdown" class="dropdown-content">  
+                        <% for (var i = 0; i < cinemas.length;i ++) { %>
+                        <a href="/chitietphim/<%= cinemas[i]._id %>"><%= cinemas[i].name %></a>
+                        
+                        <% } %>
+                      </div>
+                </div>
+            </div>
+            <% if(name != null) {%>
+    
+                <div class="col-md-offset-1 col-md-4">
+                    <a class="btn navbar-brand" href="/taophim/create" style="padding: 20px 20px">
+                        <i class="fa fa-upload fa-lg" style="color: white"></i>
+                        <p style="font-family: 'Black Han Sans';">Tạo phim mới</p>
+                    </a>
+                    <div class="btn-group">
+                        <a class="btn navbar-brand dropdown-toggle" href="" data-toggle="dropdown" style="padding: 20px 20px">
+                            <i class="far fa-user fa-lg" style="color: white"></i>
+                            <p style="font-family: 'Black Han Sans';">
+                                <%= name %>&nbsp;
+                                    <span class="caret"></span>
+                            </p>
+                        </a>
+    
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a tabindex="-1" href="/profile" style="font-family: 'Black Han Sans';">Thiết lập hồ sơ</a>
+                            </li>
+                            <li>
+                                <a tabindex="-1" href="/filmProfile" style="font-family: 'Black Han Sans';">Tùy chỉnh phim</a>
+                            </li>
+                            <li>
+                                <a tabindex="-1" href="/changePassword" style="font-family: 'Black Han Sans';">Thay đổi mật khẩu</a>
+                            </li>
+                            <li data-toggle="modal" data-target="#logout1">
+                                <a href="#" style="font-family: 'Black Han Sans';">Đăng xuất</a>
+                            </li>
+                        </ul>
+                    </div>
+    
+    
+    
+                    <!-- <a class="btn navbar-brand" href="/logout" style="padding: 20px 20px">
+                                <i class="fas fa-sign-out-alt fa-lg" style="color: white"></i>
+                                <p>Dang Xuat</p>
+                            </a> -->
+                </div>
+                <% } else { %>
+                    <div class="col-md-offset-2 col-md-3">
+                        <a class="navbar-brand" href="#" data-toggle="modal" data-target="#myModal" style="padding: 20px 20px">
+                            <i class="fa fa-sign-in fa-lg" style="color: white"></i>
+                            <p style="font-family: 'Black Han Sans';">Đăng nhập</p>
+                        </a>
+                        <a class=" navbar-brand" href="#" data-toggle="modal" data-target="#myModal2" style="padding: 20px 20px">
+                            <i class="fa fa-user-plus fa-lg" style="color: white"></i>
+                            <p style="font-family: 'Black Han Sans';">Đăng ký</p>
+                        </a>
                     </div>
                     <% } %>
+    
         </div>
-
+    
+        <!-- <div>
+            <div class="row">
+                
+                <div class="slide-show">
+                    <img src="/images/goku_all_god_transformations_limit_breaker_2017_by_windyechoes-dbl08q0.png">
+                    <img src="/images/kousei_x_kaori_a_bittersweet_goodbye_by_phantastic_crafts-d9j04cd.jpg">
+                    <img src="/images/maxresdefault.jpg">
+                    <img src="/images/star-war.jpg">
+                    <img src="/images/the-lord-of-the-rings--the-two-towers_37531357638471.jpg">
+                </div>
+                <div class="slide-opacity">
+    
+                </div>
+            </div>
+        </div> -->
+    
     </div>
 
-   
-    <%- include ./share/footer.ejs %>      
-    </div>
+        <%- include ./share/modal.ejs %>
+            
+            <!-- show danh sach phim -->
+
+            <div class="margin-page container">
+                <div class="row">
+                    <% for (var i = 0; i < cinemas.length;i ++) { %>
+                        <div class="margin-film col-md-3 box">
+                            <a class="show-phim" href="/chitietphim/<%= cinemas[i]._id %>">
+                                <img class="show-phim" src="<%= cinemas[i].image %>" width="230" />
+                                <div class="mask center-item">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <p style="font-weight: bold">
+                                                    <%= cinemas[i].name %>
+                                                </p>
+                                            </div>
+                                            <br/>
+                                            <div class="col-md-12">
+                                                <p style="font-weight: bold">
+                                                    <%= cinemas[i].userCreated %>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+                            </a>
+                        </div>
+                        <% } %>
+                </div>
+
+            </div>
+
+<!-- test sort and search -->
+
+
+            <%- include ./share/footer.ejs %>
+                </div>
+            </div>
 </body>
+
 </html>
+
+<!-- test search -->
+<style>
+    .dropbtn {
+        background-color: #4CAF50;
+        color: white;
+        padding: 16px;
+        font-size: 16px;
+        border: none;
+        cursor: pointer;
+    }
+    
+    .dropbtn:hover, .dropbtn:focus {
+        background-color: #3e8e41;
+    }
+    
+    #myInput:focus {outline: 3px solid #ddd;}
+    
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+    
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f6f6f6;
+        min-width: 230px;
+        overflow: auto;
+        border: 1px solid #ddd;
+        z-index: 1;
+    }
+    
+    .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+    
+    .dropdown a:hover {background-color: #ddd}
+    
+    .show {display:block;}
+    </style>
+<script>
+    /* When the user clicks on the button,
+    toggle between hiding and showing the dropdown content */
+    function myFunction() {
+       
+    }
+  
+    function filterFunction() {
+        var input, filter, ul, li, a, i;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        div = document.getElementById("myDropdown");
+        a = div.getElementsByTagName("a");
+        for (i = 0; i < a.length; i++) {
+            if (a[i].innerHTML.toUpperCase().indexOf(filter) > -1) {
+                a[i].style.display = "";
+            } else {
+                a[i].style.display = "none";
+            }
+        }
+        document.getElementById("myDropdown").classList.toggle("show");
+    }
+    </script>
+
+<script>
+        $(document).ready(function () {
+            $('.dropdown-submenu a.test').on("click", function (e) {
+                $(this).next('ul').toggle();
+                e.stopPropagation();
+                e.preventDefault();
+            });
+        });
+    </script>

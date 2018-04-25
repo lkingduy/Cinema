@@ -4,6 +4,8 @@ var cinema = require('../api/controller/cinemaController');
 var user = require('../api/controller/signupController');
 var userLogin = require('../api/controller/loginController');
 var film = require('../api/controller/filmController');
+var updateFilm = require('../api/controller/updateFilmController');
+var profile = require('../api/controller/profileController');
 // var csurf = require('csurf');
 // var csurfProtection = csurf();
 // router.use(csurfProtection);
@@ -33,9 +35,25 @@ router.post('/login',function(req,res,next){
 router.get('/logout',function(req,res){
   userLogin.logout(req,res);
 });
+router.get('/updateFilm/:id',function(req,res){
+  updateFilm.show(req,res);
+});
+// router.get('/updateFilm/:id',function(req,res){
+//   film.update(req,res);
+// });
+
 router.get('/filmProfile', function(req, res) {
   film.list(req, res);
 });
+router.get('/changePassword', function(req, res) {
+  profile.listPass(req,res);
+});
+router.post('/savePassword', function(req, res) {
+  profile.updatePass(req,res);
+});
+// router.get('/changePassword', function(req, res) {
+//   updatePassword.updatePass(req, res);
+// });
 /* GET users listing. */
 router.get('/', ensureAuthenticated, function(req, res, next) {
   res.render('user', { user: req.user });

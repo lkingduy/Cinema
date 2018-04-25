@@ -18,7 +18,9 @@ router.get('/create', function(req, res) {
 // Save 
 router.post('/save', function(req, res) {
   cinema.save(req, res);
+ 
 });
+
 router.post('/',function(req,res,next){
     console.log(req.body);
     

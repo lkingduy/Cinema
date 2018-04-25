@@ -30,14 +30,14 @@
             </div>
             <!-- profile -->
             <div class="container">
-                    <form action="/profile/saveProfile" method="POST">
+                    <form action="/profile/saveProfile" method="POST" ref='uploadForm' id='uploadForm' encType="multipart/form-data">
                 <div class="row">
                     <% if(users.avatar != null) { %>
                         <div class="col-md-4">
                                 <input type="hidden" name="id" value="<%= users.id %>"/>
                                 <img src="<%= users.avatar %>" class="img-upload" id="blah" width="250" height="250"/>
     
-                                <label  class="btn btn-default text-center center-item" for="exampleFormControlFile1" style="margin-left: 50px;">
+                                <label  class="btn btn-primary text-center center-item" for="exampleFormControlFile1" style="margin-left: 50px;">
                                     Chọn ảnh đại diện</label>
                                 <input type="file" class="form-control-file hide" id="exampleFormControlFile1" name="avatar" onchange="readURL(this);">
                         </div>
@@ -46,7 +46,7 @@
                                     <input type="hidden" name="id" value="<%= users.id %>"/>
                                     <img src="/images/homeshow/profile.jpg" class="img-upload" id="blah" width="250" height="250"/>
         
-                                    <label  class="btn btn-default text-center center-item" for="exampleFormControlFile1" style="margin-left: 50px;">
+                                    <label  class="btn btn-primary text-center center-item" for="exampleFormControlFile1" style="margin-left: 50px;">
                                         Chọn ảnh đại diện</label>
                                     <input type="file" class="form-control-file hide" id="exampleFormControlFile1" name="avatar" onchange="readURL(this);">
                             </div>

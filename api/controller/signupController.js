@@ -31,9 +31,10 @@ signupController.save = function (req, res) {
       console.log("Email is existed!!");
       return res.send({ status: 403, errorMessage: 'User existed' })
     }
-    var salt = bcrypt.genSaltSync(10);
-    var hash = bcrypt.hashSync('s0/\/\P4$$w0rD', salt);
-    user.password = hash;
+    //hash password
+    // var salt = bcrypt.genSaltSync(10);
+    // var hash = bcrypt.hashSync('s0/\/\P4$$w0rD', salt);
+    // user.password = hash;
     req.session.name = user.name;
     user.avatar = "/images/homeshow/profile.jpg";
     user.phone = "";

@@ -9,7 +9,10 @@ var cinemaSchema = new Schema({
     description: String,
     timePublish: String,
     image: String,
-    userCreated: String,
+    userCreated: {
+        type: String,
+        default: ''
+    },
     email:String,
 });
 

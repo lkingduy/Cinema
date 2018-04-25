@@ -17,6 +17,7 @@ var crypto = require('crypto');
 var nodemailer = require('nodemailer');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
+const fileUpload = require('express-fileupload');
 //connect db
 console.log(config.getDbConnectionString());
 mongoose.connect(config.getDbConnectionString());
@@ -35,6 +36,9 @@ var port = process.env.PORT || 3000;
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+//angular
+
+
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -44,6 +48,9 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/auth', auth);
+app.use(fileUpload());
+
+
 
 app.use(expressValidator({
   errorFormatter: function(param, msg, value) {

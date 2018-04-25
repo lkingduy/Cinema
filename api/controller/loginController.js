@@ -3,6 +3,7 @@ var User = require('./../models/userModel')
 mongoose.model("User");
 var loginController = {};
 var bcrypt = require('bcryptjs');
+var constants = require('../../config/constants')
 
 // loginController.
 //hashing a password before saving it to the database
@@ -18,17 +19,22 @@ var bcrypt = require('bcryptjs');
 //     })
 //   });
 loginController.login = function(req,res){
-  User.findOne({'email' : req.body.email}).exec(function(err,user){
+  User.findOne({email : req.body.email}).exec(function(err,user){
     if(err){
       console.log(err);
       res.redirect("../views/error");
     }
     else{
-      req.session.name = user.name;
-      req.session.id = user._id;
-      console.log(req.session.id);
-      res.redirect('/');
-      
+        if(user.password == req.body.password){
+          console.log("logged in");
+          req.session.name = user.name;
+          req.session.id = user._id;
+          console.log(req.session.name);
+          res.redirect('/');
+        }
+        else {
+          alert('Mật khẩu sai');
+        }                             
     }
   }) 
   
