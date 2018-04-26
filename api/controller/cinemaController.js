@@ -13,6 +13,18 @@ cinemaController.list = function(req,res){
         }
       });
 }
+
+cinemaController.getFilms = function(req,res){
+  Cinema.find({}).exec(function (err, cinemas) {
+      if (err) {
+        console.log("Error:", err);
+      }
+      else {
+        res.send({ status: 200, cinemas: cinemas })
+      }
+    });
+}
+
 //show single by id
 cinemaController.show = function(req, res) {
     Cinema.findOne({_id: req.params.id}).exec(function (err, cinema) {
