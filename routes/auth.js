@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var passportFacebook = require('../auth/facebook');
+var passportGoogle = require('../auth/google');
 
 router.get('/login', function(req, res, next) {
     res.render('login', { title: 'Please Sign In with:' });
@@ -21,4 +22,14 @@ function(req, res) {
   // Successful authentication, redirect home.
   res.redirect('/');
 });
+/* GOOGLE ROUTER */
+router.get('/google',
+  passportGoogle.authenticate('google', { scope: 'https://www.google.com/m8/feeds' }));
+  console.log("login gg1");
+router.get('/google/callback',
+  passportGoogle.authenticate('google', { failureRedirect: '/login' }),
+  function(req, res) {
+    res.redirect('/');
+    console.log("login gg");
+  });
 module.exports = router;
