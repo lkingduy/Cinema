@@ -8,6 +8,7 @@ cinemaController.list = function(req,res){
         if (err) {
           console.log("Error:", err);
         }
+        
         else {
           res.render("../views/trangchu", {cinemas: cinemas,name : req.session.name});
         }
@@ -17,10 +18,16 @@ cinemaController.list = function(req,res){
 //show single by id
 cinemaController.show = function(req, res) {
   console.log(req.params.id);
+   if(req.session.name == null){
+    res.redirect('/');
+  }
   res.render("../views/chitietphim", {cinemaId: req.params.id,name : req.session.name});
 };
 //add film -> create page
 cinemaController.create = function(req, res) {
+  if(req.session.name == null){
+    res.redirect('/');
+  }
     res.render("taophim",{name : req.session.name});
   };
 //add save new film

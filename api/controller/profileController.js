@@ -11,6 +11,9 @@ profileController.list = function(req,res){
         if (err) {
           console.log("Error:", err);
         }
+        else if(req.session.name == null){
+          res.redirect('/');
+        }
         else {
           res.render("../views/profile", {users: users,name : req.session.name});
         }
@@ -20,6 +23,9 @@ profileController.listPass = function(req,res){
   User.findOne({'name': req.session.name}).exec(function (err, users) {
       if (err) {
         console.log("Error:", err);
+      }
+      else if(req.session.name == null){
+        res.redirect('/');
       }
       else {
         res.render("../views/changePassword", {users: users,name : req.session.name});
@@ -32,6 +38,7 @@ profileController.update = function(req, res) {
 
 // The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file
 let sampleFile = req.files.avatar;
+// var imgEnd = sampleFile.name.split('.').pop();
 var imgEnd = sampleFile.name.split('.').pop();
   var imgName = Date.now() + '.' + imgEnd ;
 // Use the mv() method to place the file somewhere on your server
@@ -48,6 +55,7 @@ sampleFile.mv(__dirname +'/../../public/images/' + imgName, function(err) {
     
     req.session.name = users.name;
     console.log(users);
+    
     res.render("../views/profile" ,{users:users,name:req.session.name});
   });
 };
@@ -63,6 +71,7 @@ profileController.updatePass = function(req, res) {
       console.log(err);
       res.render("../views/trangchu");
     }
+    
     console.log("abc");
     req.session.name = users.name;
     res.render("../views/changePassword" ,{users:users,name:req.session.name});

@@ -48,7 +48,7 @@
                     <div class="form-group">
                         <label class="btn btn-primary text-center my-btn" for="exampleFormControlFile1">
                             <i class="fa fa-file-image-o fa-lg"></i>&nbsp;&nbsp; Chọn hình minh họa</label>
-                        <input type="file" class="form-control-file hide" id="exampleFormControlFile1" name="image" ng-model="image" onchange="readURL(this);">
+                        <input type="file" class="form-control-file hide" id="exampleFormControlFile1" name="image" ng-model="image"  onchange="return ValidateFileUpload()">
                     </div>
             </div>
             <div class="container col-sm-12 col-md-7 my-form-film">
@@ -113,19 +113,42 @@
     <script src="/javascripts/taophim.js"></script>  
 </body>
 </html>
-<script>
-    function readURL(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
+<script type="text/javascript">
+    function ValidateFileUpload() {
+        var fuData = document.getElementById('exampleFormControlFile1');
+        var FileUploadPath = fuData.value;
 
-            reader.onload = function (e) {
-                $('#blah')
-                    .attr('src', e.target.result)
-                    .width(300)
-                    .height(300);
-            };
+//To check if user upload any file
+        if (FileUploadPath == '') {
+            alert("Please upload an image");
 
-            reader.readAsDataURL(input.files[0]);
+        } else {
+            var Extension = FileUploadPath.substring(
+                    FileUploadPath.lastIndexOf('.') + 1).toLowerCase();
+
+//The file uploaded is an image
+
+if (Extension == "gif" || Extension == "png" || Extension == "bmp"
+                    || Extension == "jpeg" || Extension == "jpg") {
+
+// To Display
+                if (fuData.files && fuData.files[0]) {
+                    var reader = new FileReader();
+
+                    reader.onload = function(e) {
+                        $('#blah').attr('src', e.target.result);
+                    }
+
+                    reader.readAsDataURL(fuData.files[0]);
+                }
+
+            } 
+
+//The file upload is NOT an image
+else {
+                alert("Photo only allows file types of GIF, PNG, JPG, JPEG and BMP. ");
+
+            }
         }
     }
 </script>
