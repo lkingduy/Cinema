@@ -10,9 +10,6 @@ filmController.list = function(req,res){
         if (err) {
           console.log("Error:", err);
         }
-        else if(req.session.name == null){
-          res.redirect('/');
-        }
         else {
           res.render("../views/filmProfile", {cinemas: cinemas,name : req.session.name});
         }

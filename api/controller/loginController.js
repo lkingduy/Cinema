@@ -1,5 +1,6 @@
 var mongoose = require("mongoose");
 var User = require('./../models/userModel')
+var Cinema = require('./../models/cinemaModel')
 mongoose.model("User");
 var loginController = {};
 var bcrypt = require('bcryptjs');
@@ -26,15 +27,20 @@ loginController.login = function(req,res){
     }
     else{
         if(user.password == req.body.password){
-          console.log("logged in");
-          req.session.name = user.name;
-          console.log(req.session.name);
-          console.log(user.avatar);
-          console.log(req.session.avatar);
-          res.redirect('/');
+          Cinema.find({}).exec(function(err,cinema){
+            console.log("logged in");
+            req.session.name = user.name;
+            console.log(req.session.name);
+            console.log(user.avatar);
+            console.log(req.session.avatar);
+            var jsonUser = JSON.parse('{ "name": req.session.name,"avatar": user.avatar  }')
+            res.render("../views/trangchu",{jsonUser:jsonUser,cinema: cinema,name: req.session.name});
+            // res.redirect('/');
+          })
+          
         }
         else {
-          alert('Mật khẩu sai');
+          
         }                             
     }
   }) 
