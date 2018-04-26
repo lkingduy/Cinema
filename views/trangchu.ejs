@@ -6,7 +6,6 @@
 
     </title>
     <%- include ./share/head.ejs %>
-        <script src="/javascripts/trangchu.js"></script>
 </head>
 
 <body ng-controller="listFilmController">
@@ -24,8 +23,7 @@
             </a>
             <div class="col-md-4">
                 <div class="navbar-brand dropdown">
-                    <input class="form-input " type="text" id="myInput" placeholder="Tìm kiếm..." size="40" onclick="myFunction()" onkeyup="filterFunction()"
-                    />
+                    <input class="form-input " type="text" id="myInput" placeholder="Tìm kiếm..." size="40" ng-model="searchText" />
                     <button type="submit" class="btn">
                         <i class="fas fa-search">
                         </i>
@@ -119,7 +117,7 @@
         </h1>
         <div class="margin-page container">
             <div class="row">
-                <div class="margin-film col-md-3 box" ng-repeat="cinema in listFilm">
+                <div class="margin-film col-md-3 box" ng-repeat="cinema in listFilm| filter:searchText">
                     <a class="show-phim" href="/chitietphim/{{ cinema.id }}">
                         <img class="show-phim" src="{{ cinema.image }}" width="230" />
                         <div class="mask center-item">
@@ -146,6 +144,8 @@
 
         <!-- test sort and search -->
         <%- include ./share/footer.ejs %>
+            <script src="/javascripts/trangchu.js"></script>
+
 </body>
 
 </html>
@@ -233,3 +233,5 @@
         });
     });
 </script>
+
+<!-- test search -->
