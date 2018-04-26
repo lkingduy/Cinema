@@ -31,7 +31,7 @@ var chitietphimRouter = require('./routes/chitietphim');
 var profileRouter = require('./routes/profile');
 var filmProfileRouter = require('./routes/filmProfile');
 var app = express();
-var port = process.env.PORT || 3000;
+// var port = process.env.PORT || 3000;
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -94,6 +94,6 @@ app.use(function(err, req, res, next) {
 });
 
 module.exports = app;
-app.listen(port, function(){
-  console.log("App listening on port: " + port);
-});
+// app.listen(port, function(){
+//   console.log("App listening on port: " + port);
+// });
