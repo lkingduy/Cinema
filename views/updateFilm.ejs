@@ -17,7 +17,7 @@
         <strong style="font-size: 40px;">Cập nhật phim</strong>
     </div>
     <div class="container my-create-film film-shadow">
-        <form action="/filmProfile/save" method="POST">
+        <form ref='uploadForm' id='uploadForm' encType="multipart/form-data" action="/filmProfile/save" method="POST">
             <div class="container col-sm-12 col-md-5 text-center ">
                 <label class="btn" for="exampleFormControlFile1">
                     <img src="<%= cinema.image %>" width="300" height="300" class="img-upload" id="blah"/>

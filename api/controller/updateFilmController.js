@@ -19,7 +19,8 @@ updateFilmController.show = function(req,res){
 
 
   updateFilmController.update = function(req,res){
-
+    console.log(req.body);
+    console.log(req.files);
     if (!req.files)
     return res.status(400).send('No files were uploaded.');
  
@@ -39,7 +40,7 @@ updateFilmController.show = function(req,res){
   });
 
     console.log(req.body);
-    req.body.image = '/images/homeshow/' + imgName;
+    req.body.image = imgName;
     Cinema.findByIdAndUpdate(req.body.id, { $set: {id:req.body.id,name : req.body.name,image:"/images/homeshow/" + req.body.image,description: req.body.description.trim()}}, { new: true }, function (err,cinema) {
       if (err) {
         console.log("abc");
@@ -48,7 +49,7 @@ updateFilmController.show = function(req,res){
         res.render("../views/trangchu");
       }
       console.log("xyz");
-      res.redirect("/chitietphim/" + req.body.id);
+      res.redirect("/cinema/" + req.body.id);
     });
   }
   module.exports = updateFilmController;

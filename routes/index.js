@@ -42,7 +42,7 @@ router.get('/filmProfile', function(req, res) {
 router.post('/filmProfile/save', function(req, res) {
   updateFilm.update(req,res);
 });
-router.get('filmProfile/delete/:id',function(req,res){
+router.get('/filmProfile/delete/:id',function(req,res){
   film.delete(req,res);
 });
 router.get('/changePassword', function(req, res) {
@@ -51,7 +51,9 @@ router.get('/changePassword', function(req, res) {
 router.post('/savePassword', function(req, res) {
   profile.updatePass(req,res);
 });
-
+router.post('/profile/saveProfile',function(req,res,next){
+  profile.update(req,res);
+});
 /* GET users listing. */
 router.get('/', ensureAuthenticated, function(req, res, next) {
   res.render('user', { user: req.user });

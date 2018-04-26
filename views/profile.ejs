@@ -35,9 +35,12 @@
                     <% if(users.avatar != null) { %>
                         <div class="col-md-4">
                                 <input type="hidden" name="id" value="<%= users.id %>"/>
-                                <img src="<%= users.avatar %>" class="img-upload" id="blah" width="250" height="250"/>
+                                <label class="btn" for="exampleFormControlFile1">
+                                    <img src="<%= users.avatar %>" class="img-upload" id="blah" width="250" height="250" />
+                                </label>
+                                
     
-                                <label  class="btn btn-primary text-center center-item" for="exampleFormControlFile1" style="margin-left: 50px;">
+                                <label  class="btn btn-primary text-center center-item" for="exampleFormControlFile1" style="margin-left: 70px;">
                                     Chọn ảnh đại diện</label>
                                 <input type="file" class="form-control-file hide" id="exampleFormControlFile1" name="avatar" onchange="readURL(this);">
                         </div>
@@ -64,7 +67,7 @@
                             </div>
                             <div class="form-group">
                                     <i class="fa fa-phone-square fa-lg"></i>&nbsp;&nbsp;<label>Phone</label>
-                                    <input type="text" class="form-control" value="<%= users.phone %>" name="phone"/>
+                                    <input type="text" class="form-control" value="<%= users.phone %>" name="phone" pattern="^(\d{10}|\d{11})$"/>
                                 </div>
                             <div class="form-group">
                                 <button class="btn btn-primary" type="submit">Save</button>

@@ -28,8 +28,9 @@ loginController.login = function(req,res){
         if(user.password == req.body.password){
           console.log("logged in");
           req.session.name = user.name;
-          req.session.id = user._id;
           console.log(req.session.name);
+          console.log(user.avatar);
+          console.log(req.session.avatar);
           res.redirect('/');
         }
         else {

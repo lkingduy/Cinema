@@ -60,7 +60,6 @@
                                     {{ cinema.description }}
                                 </span>
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -70,7 +69,7 @@
             <div class="center-item" ng-show="cinema.userCreated == '<%= name %>'">
                 <button class="btn btn-primary" id="updateFilm">Chỉnh sửa phim</button>
                 &nbsp;&nbsp;
-                <form>
+                <form action="/filmProfile/delete/<%= cinemaId %>">
                     <a class="btn btn-danger" type="submit" href="#" data-toggle="modal" data-target="#removeFilm" style="width: 115px">Xóa phim</a>
                 </form>
             </div>

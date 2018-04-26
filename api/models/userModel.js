@@ -14,8 +14,14 @@ var userSchema = new Schema({
         required: true
     },
     name: String,
-    avatar: String,
-    phone: String
+    avatar: {
+        type: String,
+        default: "/images/avatar.png"
+    },
+    phone: {
+       type: String,
+       default: ""
+    }
 });
 userSchema.statics.findOrCreate = require("find-or-create");
 var user = mongoose.model("User",userSchema);
