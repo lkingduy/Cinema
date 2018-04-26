@@ -16,16 +16,9 @@ cinemaController.list = function(req,res){
 
 //show single by id
 cinemaController.show = function(req, res) {
-    Cinema.findOne({_id: req.params.id}).exec(function (err, cinema) {
-      if (err) {
-        console.log("Error:", err);
-      }
-      else {
-        console.log(cinema.name);
-        res.render("../views/chitietphim", {cinema: cinema,name : req.session.name});
-      }
-    });
-  };
+  console.log(req.params.id);
+  res.render("../views/chitietphim", {cinemaId: req.params.id,name : req.session.name});
+};
 //add film -> create page
 cinemaController.create = function(req, res) {
     res.render("taophim",{name : req.session.name});

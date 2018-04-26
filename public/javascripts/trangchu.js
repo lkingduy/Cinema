@@ -9,3 +9,4 @@ app.controller('listFilmController', function ($scope) {
         $scope.$apply()
     })
 })
+

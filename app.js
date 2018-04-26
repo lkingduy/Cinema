@@ -25,11 +25,6 @@ require('./api/models/cinemaModel');
 require('./api/models/userModel');
 require('./api/models/user');
 var indexRouter = require('./routes/index');
-var taophimRouter = require('./routes/taophim');
-var trangchuRouter = require('./routes/trangchu');
-var chitietphimRouter = require('./routes/chitietphim');
-var profileRouter = require('./routes/profile');
-var filmProfileRouter = require('./routes/filmProfile');
 var apiCinema = require('./api/routes/cinema');
 var app = express();
 var port = process.env.PORT || 3000;
@@ -73,11 +68,7 @@ app.use(expressValidator({
 app.use(flash());
 var setupController = require("./api/controller/setupController");
 setupController(app);
-app.use('/', trangchuRouter);
-app.use('/taophim', taophimRouter);
-app.use('/chitietphim',chitietphimRouter);
-app.use('/profile',profileRouter);
-app.use('/filmProfile',filmProfileRouter);
+app.use('/', indexRouter);
 app.use('/api/cinema',apiCinema);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -14,4 +14,15 @@ router.get('/', function (req, res) {
       });
 })
 
+router.get('/:id', function (req, res) {
+  Cinema.findById(req.params.id).exec(function (err, cinema) {
+      if (err) {
+        console.log("Error:", err);
+      }
+      else {
+        res.send({ status: 200, cinema : cinema })
+      }
+    });
+})
+
 module.exports = router

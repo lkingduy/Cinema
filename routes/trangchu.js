@@ -14,7 +14,7 @@ router.get('/', function(req, res) {
   console.log(req.session.name);
   cinema.list(req, res);
 });
-
+router.get('/:id', cinema.show);
 // router.get('/',function(req,res,next){
 // res.render('/',{csurfToken: req.csrfToken()})
 // });
@@ -26,15 +26,7 @@ router.get('/create', function(req, res) {
 router.post('/save', function(req, res,next) {
   user.save(req, res);
 });
-router.post('/',function(req,res,next){
-    console.log(req.body);
-  });
-router.post('/login',function(req,res,next){
-  userLogin.login(req,res);
-});
-router.get('/logout',function(req,res){
-  userLogin.logout(req,res);
-});
+
 router.get('/updateFilm/:id',function(req,res){
   updateFilm.show(req,res);
 });
@@ -51,9 +43,7 @@ router.get('/changePassword', function(req, res) {
 router.post('/savePassword', function(req, res) {
   profile.updatePass(req,res);
 });
-// router.get('/changePassword', function(req, res) {
-//   updatePassword.updatePass(req, res);
-// });
+
 /* GET users listing. */
 router.get('/', ensureAuthenticated, function(req, res, next) {
   res.render('user', { user: req.user });

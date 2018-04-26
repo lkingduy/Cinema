@@ -1,35 +1,38 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="Cinema">
 
 <head>
     <title>
 
     </title>
     <%- include ./share/head.ejs %>
+
 </head>
 
-<body>
+<body ng-controller="listFilmById">
     <%- include ./share/header.ejs %>
         <%- include ./share/modal.ejs %>
 
+            <p class="" id="cinema-id">
+                <%= cinemaId %>
+            </p>
+
             <!-- Chi tiet phim -->
             <h1 style="margin-bottom: 50px; font-size: 40px;color: rgb(40, 96, 144);" class="col-md-12 center-item">
-                <img src="/images/heading-left-line.png" style="line-height: 30px;">&nbsp;&nbsp;
-                <%= cinema.name %>
-                    &nbsp;&nbsp;
-                    <img src="/images/heading-right-line.png" style="line-height: 30px;">
+                <img src="/images/heading-left-line.png" style="line-height: 30px;">&nbsp;&nbsp; {{ cinema.name }} &nbsp;&nbsp;
+                <img src="/images/heading-right-line.png" style="line-height: 30px;">
             </h1>
             <div class="container">
                 <div class="row">
                     <div class="col-md-4" style="overflow: hidden;">
-                        <img src="<%= cinema.image %>" width="400" style="vertical-align: middle;">
+                        <img src="{{ cinema.image }}" width="400" style="vertical-align: middle;">
                     </div>
                     <div class="col-md-offset-1 col-md-7">
                         <div class="row">
                             <div class="col-md-12">
                                 <strong style="font-size: 25px;">Thể loại:</strong>
                                 <span style="font-size: 20px;">
-                                    <%= cinema.category %>
+                                    {{ cinema.category }}
                                 </span>
                             </div>
                             <br/>
@@ -43,7 +46,7 @@
                             <div class="col-md-12">
                                 <strong style="font-size: 25px;">Người tạo:</strong>
                                 <span style="font-size: 20px;">
-                                    <%= cinema.userCreated %>
+                                    {{ cinema.userCreated }}
                                 </span>
                             </div>
                             <br/>
@@ -54,7 +57,7 @@
                             </div>
                             <div class="col-md-12">
                                 <span style="font-size: 20px;">
-                                    <%= cinema.description %>
+                                    {{ cinema.description }}
                                 </span>
                             </div>
 
@@ -64,65 +67,53 @@
 
             </div>
             <br/>
-            <% if(cinema.userCreated == name) {%>
-                <div class="center-item">
-                    <a class="btn btn-primary" href="/updateFilm/<%= cinema._id %>">Chỉnh sửa phim</a>
-                    &nbsp;&nbsp;
-                    <form action="/filmProfile/delete/<%= cinema._id %>" method="POST">
-                        <a class="btn btn-danger" type="submit" href="#" data-toggle="modal" data-target="#removeFilm" style="width: 115px">Xóa phim</a>
-                      
-                    </form>
-
-
-                </div>
-                <%} else { %>
-                    <div class="center-item">
-                        <button class="btn btn-primary" onclick="goBack()">Quay trở về</button>
-                    </div>
-                    <% } %>
+            <div class="center-item" ng-show="cinema.userCreated == '<%= name %>'">
+                <button class="btn btn-primary" id="updateFilm">Chỉnh sửa phim</button>
+                &nbsp;&nbsp;
+                <form>
+                    <a class="btn btn-danger" type="submit" href="#" data-toggle="modal" data-target="#removeFilm" style="width: 115px">Xóa phim</a>
+                </form>
+            </div>
+            <div class="center-item">
+                <button class="btn btn-primary" onclick="goBack()">Quay trở về</button>
+            </div>
 
 
 
-                        <!-- Footer -->
-                        <%- include ./share/footer.ejs %>
+            <!-- Footer -->
+            <%- include ./share/footer.ejs %>
+                <script src="/javascripts/chitietphim.js"></script>
 </body>
 
 </html>
 <!-- Modal delete phim -->
 <div class="modal fade" id="removeFilm" role="dialog">
-        <div class="modal-dialog modal-sm">
-      
-          <!-- Modal content-->
-          <div class="modal-content">
+    <div class="modal-dialog modal-sm">
+
+        <!-- Modal content-->
+        <div class="modal-content">
             <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal">&times;</button>
-              <div class="center-item">
-                  <h4 class="modal-title" style="color: black">Xóa phim</h4>
-              </div>
-      
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <div class="center-item">
+                    <h4 class="modal-title" style="color: black">Xóa phim</h4>
+                </div>
+
             </div>
             <div class="modal-body center-item">
-              <strong style="font-size: 20px;color: black">Bạn muốn xóa phim?</strong>
-      
+                <strong style="font-size: 20px;color: black">Bạn muốn xóa phim?</strong>
+
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-danger" data-dismiss="modal" style="float: left">Không</button>
-              <button class="btn btn-primary" data-dismiss="modal" id="removeFilm2" style="width: 64px;">Có</button>
-      
+                <button type="button" class="btn btn-danger" data-dismiss="modal" style="float: left">Không</button>
+                <button class="btn btn-primary" data-dismiss="modal" id="removeFilm2" style="width: 64px;">Có</button>
+
             </div>
-          </div>
-      
         </div>
-      </div>
+
+    </div>
+</div>
 <script>
     function goBack() {
         window.history.back();
     }
 </script>
-<script>
-        $(document).ready(function () {
-          $('#removeFilm2').on("click", function (e) {
-            window.location.href = "/filmProfile/delete/<%= cinema._id %>";
-          });
-        });
-      </script>

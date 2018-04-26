@@ -28,14 +28,6 @@
                         <i class="fas fa-search">
                         </i>
                     </button>
-                    <div id="myDropdown" class="dropdown-content">
-                        <% for (var i = 0; i < cinemas.length;i ++) { %>
-                            <a href="/chitietphim/<%= cinemas[i]._id %>">
-                                <%= cinemas[i].name %>
-                            </a>
-
-                            <% } %>
-                    </div>
                 </div>
             </div>
             <% if(name != null) {%>
@@ -118,7 +110,7 @@
         <div class="margin-page container">
             <div class="row">
                 <div class="margin-film col-md-3 box" ng-repeat="cinema in listFilm| filter:searchText">
-                    <a class="show-phim" href="/chitietphim/{{ cinema.id }}">
+                    <a class="show-phim" href="/cinema/{{ cinema._id }}">
                         <img class="show-phim" src="{{ cinema.image }}" width="230" />
                         <div class="mask center-item">
                             <div class="container">
