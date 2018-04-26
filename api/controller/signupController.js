@@ -48,7 +48,7 @@ signupController.save = function (req, res) {
         
         // res.redirect("/trangchu"+cinema._id);
         console.log(req.session.name);
-        res.send({ cinemas: cinemas, name: req.session.name });
+        res.send({ cinemas: cinemas, name: req.session.name, successMessage: 'Create Successful' });
       }
     });
   });

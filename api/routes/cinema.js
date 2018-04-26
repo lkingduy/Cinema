@@ -2,6 +2,7 @@ var express = require('express')
 var router = express.Router()
 var mongoose = require("mongoose");
 var Cinema = mongoose.model("Cinema");
+var cinemaController = require('../controller/cinemaController');
 
 router.get('/', function (req, res) {
     Cinema.find({}).exec(function (err, cinemas) {
@@ -24,5 +25,9 @@ router.get('/:id', function (req, res) {
       }
     });
 })
+
+// Save 
+router.post('/save', cinemaController.save)
+
 
 module.exports = router

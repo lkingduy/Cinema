@@ -12,7 +12,11 @@ router.get('/', function(req, res) {
   cinema.list(req, res);
 });
 router.get('/cinema/:id', cinema.show);
-router.get('/create', function(req, res) {
+ // Create 
+ router.get('/film/create', function(req, res) {
+  cinema.create(req, res);
+});
+router.get('/user/create', function(req, res) {
   user.create(req, res);
 });
 // Save 
@@ -35,6 +39,12 @@ router.get('/logout',function(req,res){
 router.get('/filmProfile', function(req, res) {
   film.list(req, res);
 });
+router.post('/filmProfile/save', function(req, res) {
+  updateFilm.update(req,res);
+});
+router.get('filmProfile/delete/:id',function(req,res){
+  film.delete(req,res);
+});
 router.get('/changePassword', function(req, res) {
   profile.listPass(req,res);
 });
@@ -50,7 +60,4 @@ function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) { return next(); }
   res.redirect('/login')
 } 
-router.post('/save',function(req,res){
-  updateFilm.update(req,res);
-});
 module.exports = router;

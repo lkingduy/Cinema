@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="Cinema">
 
 <head>
     <title>
@@ -8,7 +8,7 @@
     <%- include ./share/head.ejs %>
 </head>
 
-<body>
+<body ng-controller="createFilmController">
     <%- include ./share/header.ejs %>
     <%- include ./share/modal.ejs %>
 
@@ -39,26 +39,26 @@
         <strong style="font-size: 40px;">Tạo phim mới</strong>
     </div>
     <div class="container my-create-film">
-        <form action="/taophim/save" method="POST" ref='uploadForm' id='uploadForm' encType="multipart/form-data">
+        <form ref='uploadForm' id='uploadForm' encType="multipart/form-data">
             <div class="container col-sm-12 col-md-5 text-center ">
                 <label class="btn" for="exampleFormControlFile1">
                     <img src="/images/image.png" width="300" height="300" class="img-upload" id="blah"/>
-                    <input type="hidden" name=""/>
+                    
                 </label>
                     <div class="form-group">
                         <label class="btn btn-primary text-center my-btn" for="exampleFormControlFile1">
                             <i class="fa fa-file-image-o fa-lg"></i>&nbsp;&nbsp; Chọn hình minh họa</label>
-                        <input type="file" class="form-control-file hide" id="exampleFormControlFile1" name="image" onchange="readURL(this);">
+                        <input type="file" class="form-control-file hide" id="exampleFormControlFile1" name="image" ng-model="image" onchange="readURL(this);">
                     </div>
             </div>
             <div class="container col-sm-12 col-md-7 my-form-film">
                 <div class="form-group">
                     <h4>Tên bộ phim</h4>
-                    <input type="text" class="form-control my-input-film" name="name" />
+                    <input type="text" class="form-control my-input-film" ng-model="name" name="name"/>
                 </div>
                 <div class="form-group">
                     <h4>Thể loại phim:</h4>
-                    <select class="my-input-film col-md-12 col-sm-12 col-lg-12 col-xs-12 my-select-film form-control" id="film-category" name="category">
+                    <select class="my-input-film col-md-12 col-sm-12 col-lg-12 col-xs-12 my-select-film form-control" id="film-category" name="category" ng-model="category">
                         <option selected="selected" value="Tiểu sử lịch sử">Tiểu sử lịch sử</option>
                         <option value="Lãng mạn tình cảm">Lãng mạn tình cảm</option>
                         <option value="Khoa học viễn tưởng">Khoa học viễn tưởng</option>
@@ -95,12 +95,12 @@
 
                 <div class="form-group">
                     <h4>Nội dung mô tả</h4>
-                    <textarea name="description" class="form-control" rows="5" placeholder="Tên diễn viên, nội dung phim..">
+                    <textarea name="description" ng-model="description" class="form-control" rows="5" placeholder="Tên diễn viên, nội dung phim..">
                 </textarea>
                 </div>
                 <div class="form-group">
                     
-                        <button type="submit" class="btn btn-primary my-btn text-center" style="margin-right: 15px">
+                        <button ng-click="createFilm()" class="btn btn-primary my-btn text-center" style="margin-right: 15px">
                                 Tạo phim
                         </button>
                 </div>
@@ -109,7 +109,8 @@
             
         </form>
     </div>
-    <%- include ./share/footer.ejs %>  
+    <%- include ./share/footer.ejs %>
+    <script src="/javascripts/taophim.js"></script>  
 </body>
 </html>
 <script>

@@ -33,7 +33,7 @@
             <% if(name != null) {%>
 
                 <div class="col-md-offset-1 col-md-4">
-                    <a class="btn navbar-brand" href="/taophim/create" style="padding: 20px 20px">
+                    <a class="btn navbar-brand" href="/film/create" style="padding: 20px 20px">
                         <i class="fa fa-upload fa-lg" style="color: white"></i>
                         <p style="font-family: 'Black Han Sans';">Tạo phim mới</p>
                     </a>
@@ -104,9 +104,6 @@
 
     <%- include ./share/modal.ejs %>
         <!-- show danh sach phim -->
-        <h1>
-            {{ appName }}
-        </h1>
         <div class="margin-page container">
             <div class="row">
                 <div class="margin-film col-md-3 box" ng-repeat="cinema in listFilm| filter:searchText">
@@ -133,9 +130,9 @@
                 </div>
             </div>
         </div>
-
-        <!-- test sort and search -->
         <%- include ./share/footer.ejs %>
+        <!-- test sort and search -->
+        
             <script src="/javascripts/trangchu.js"></script>
 
 </body>

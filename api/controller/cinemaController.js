@@ -29,6 +29,11 @@ cinemaController.save = function(req, res) {
     // var year = document.getElementById("film-year");
     // var filmCategory = document.getElementById("film-category");
 
+    console.log(req.body);
+    console.log(req.files);
+    
+    
+
     if (!req.files)
     return res.status(400).send('No files were uploaded.');
  
@@ -44,7 +49,8 @@ cinemaController.save = function(req, res) {
     
   sampleFile.mv(__dirname +'/../../public/images/homeshow/' + imgName, function(err) {
     if (err)
-      return res.status(500).send(err);
+      // return res.status(500).send(err);
+      res.send({ errorMessage: 'Require image' })
   });
     
     console.log(sampleFile.name);
@@ -57,11 +63,11 @@ cinemaController.save = function(req, res) {
     cinema.save(function(err) {
       if(err) {
         console.log(err);
-        res.render("trangchu",{name: req.session.name});
+        
       } else {
         console.log("Successfully created an film.");
         // res.redirect("/trangchu"+cinema._id);
-        res.redirect("/");
+        res.send({ status: 200 })
       }
     });
   };
