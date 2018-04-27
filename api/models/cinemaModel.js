@@ -13,7 +13,7 @@ var cinemaSchema = new Schema({
         type: String,
         default: ''
     },
-    email:String,
+    userID:String,
 });
 
 var phim = mongoose.model("Cinema", cinemaSchema);

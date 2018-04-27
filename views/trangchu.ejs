@@ -71,18 +71,29 @@
 
                 <h1 style="margin-top: 12px;font-family: 'Black Han Sans';">Cinema</h1>
             </a>
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <div class="navbar-brand dropdown">
-                    <input class="form-input " type="text" id="myInput" placeholder="Tìm kiếm..." size="40" ng-model="searchText" />
+                    <input class="form-input " type="text" id="myInput" placeholder="Tìm kiếm..." size="20" ng-model="searchText" />
                     <button type="submit" class="btn">
                         <i class="fas fa-search">
                         </i>
                     </button>
                 </div>
             </div>
+            <div class="col-md-2" style="line-height: 4.5">
+                    <div class="dropdown">
+                        <strong>Sort By:    </strong>  &nbsp;&nbsp; <button class="btn btn-default dropdown-toggle" type="button" 
+                         data-toggle="dropdown">Name
+                            <span class="caret"></span></button>
+                            <ul class="dropdown-menu">
+                              <li><a tabindex="-1" href="#" ng-click="sortBy('name')">Name</a></li>
+                              <span class="sortorder" ng-show="propertyName === 'name'" ng-class="{reverse: reverse}"></span>
+                            </ul>
+                          </div>
+            </div>
             <% if(name != null) {%>
 
-                <div class="col-md-offset-1 col-md-4">
+                <div class=" col-md-4">
                     <a class="btn navbar-brand" href="/film/create" style="padding: 20px 20px">
                         <i class="fa fa-upload fa-lg" style="color: white"></i>
                         <p style="font-family: 'Black Han Sans';">Tạo phim mới</p>
@@ -121,7 +132,7 @@
                     </div>
                 </div>
                 <% } else { %>
-                    <div class="col-md-offset-2 col-md-3">
+                    <div class="col-md-offset-1 col-md-3">
                         <a class="navbar-brand" href="#" data-toggle="modal" data-target="#myModal" style="padding: 20px 20px">
                             <i class="fa fa-sign-in fa-lg" style="color: white"></i>
                             <p style="font-family: 'Black Han Sans';">Đăng nhập</p>
@@ -157,32 +168,34 @@
 
     <%- include ./share/modal.ejs %>
         <!-- show danh sach phim -->
-        <div class="margin-page container">
-            <div class="row">
-                <div class="margin-film col-md-3 box" ng-repeat="cinema in listFilm| filter:searchText">
-                    <a class="show-phim" href="/cinema/{{ cinema._id }}">
-                        <img class="show-phim" src="{{ cinema.image }}" width="230" />
-                        <div class="mask center-item">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <p style="font-weight: bold">
-                                            {{ cinema.name }}
-                                        </p>
-                                    </div>
-                                    <br/>
-                                    <div class="col-md-12">
-                                        <p style="font-weight: bold">
-                                            {{ cinema.userCreated }}
-                                        </p>
+        <div class="container">
+                <div class="row">
+                        <div class="margin-film col-md-3 box" ng-repeat="cinema in listFilm | orderBy:propertyName:reverse | filter:searchText">
+                            <a class="show-phim" href="/cinema/{{ cinema._id }}">
+                                <img class="show-phim" src="{{ cinema.image }}" width="230" />
+                                <div class="mask center-item">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <p style="font-weight: bold">
+                                                    {{ cinema.name }}
+                                                </p>
+                                            </div>
+                                            <br/>
+                                            <div class="col-md-12">
+                                                <p style="font-weight: bold">
+                                                    {{ cinema.userCreated }}
+                                                </p>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            </a>
                         </div>
-                    </a>
-                </div>
-            </div>
+                    </div>
         </div>
+           
+      
         <%- include ./share/footer.ejs %>
         <!-- test sort and search -->
         

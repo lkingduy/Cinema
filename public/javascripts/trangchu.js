@@ -7,6 +7,13 @@ app.controller('listFilmController', function ($scope) {
         console.log(res);
         $scope.listFilm = res.cinemas
         $scope.$apply()
+        $scope.reverse = true;
+        $scope.sortBy = function(propertyName) {
+            $scope.reverse = ($scope.propertyName === propertyName) ? !$scope.reverse : false;
+            $scope.propertyName = propertyName;
+          };
     })
+    
 })
+
 

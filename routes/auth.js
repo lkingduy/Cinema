@@ -34,7 +34,7 @@ router.get('/google/callbacks',
   passportGoogle.authenticate('google', { failureRedirect: '/login' }),
   function (req, res) {
     console.log()
-    // res.redirect('/');
+    res.redirect('/');
     console.log("login gg");
   });
 module.exports = router;

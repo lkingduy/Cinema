@@ -29,7 +29,7 @@ signupController.save = function (req, res) {
     
     if (userExist) {
       console.log("Email is existed!!");
-      return res.send({ status: 403, errorMessage: 'User existed' })
+      return res.send({ status: 403, errorMessage: 'Email đã tồn tại!!' })
     }
     //hash password
     // var salt = bcrypt.genSaltSync(10);
