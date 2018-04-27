@@ -83,11 +83,18 @@
             <div class="col-md-2" style="line-height: 4.5">
                     <div class="dropdown">
                         <strong>Sort By:    </strong>  &nbsp;&nbsp; <button class="btn btn-default dropdown-toggle" type="button" 
-                         data-toggle="dropdown">Name
+                         data-toggle="dropdown">Choose
                             <span class="caret"></span></button>
                             <ul class="dropdown-menu">
-                              <li><a tabindex="-1" href="#" ng-click="sortBy('name')">Name</a></li>
-                              <span class="sortorder" ng-show="propertyName === 'name'" ng-class="{reverse: reverse}"></span>
+                              <li><a tabindex="-1" href="#" ng-click="sortBy('name')">Film Name</a>
+                                <span class="sortorder" ng-show="propertyName === 'name'" ng-class="{reverse: reverse}"></span>
+                            </li>
+                            <li><a tabindex="-1" href="#" ng-click="sortBy('userCreated')">User Created</a>
+                                <span class="sortorder" ng-show="propertyName === 'userCreated'" ng-class="{reverse: reverse}"></span>
+                            </li>
+                            <li><a tabindex="-1" href="#" ng-click="sortBy('timePublish')">timePublish</a>
+                                <span class="sortorder" ng-show="propertyName === 'timePublish'" ng-class="{reverse: reverse}"></span>
+                            </li>
                             </ul>
                           </div>
             </div>
@@ -186,6 +193,7 @@
                                                 <p style="font-weight: bold">
                                                     {{ cinema.userCreated }}
                                                 </p>
+                                                <p class="hide">{{ cinema.timePublish }}</p>
                                             </div>
                                         </div>
                                     </div>
