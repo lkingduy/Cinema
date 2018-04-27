@@ -35,9 +35,10 @@ signupController.save = function (req, res) {
     // var salt = bcrypt.genSaltSync(10);
     // var hash = bcrypt.hashSync('s0/\/\P4$$w0rD', salt);
     // user.password = hash;
-    req.session.name = user.name;
-    user.avatar = "/images/homeshow/profile.jpg";
+    
+    // user.avatar = "/images/homeshow/profile.jpg";
     user.phone = "";
+    req.session.name = [user.name,user.avatar];
     user.save(function (err, cinemas) {
       if (err) {
         console.log(err);

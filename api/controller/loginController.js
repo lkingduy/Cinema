@@ -29,12 +29,11 @@ loginController.login = function(req,res){
         if(user.password == req.body.password){
           Cinema.find({}).exec(function(err,cinema){
             console.log("logged in");
-            req.session.name = user.name;
+            // req.session.name = user.name +'&'+user.avatar;
+            req.session.name = [user.name,user.avatar];
             console.log(req.session.name);
-            console.log(user.avatar);
-            console.log(req.session.avatar);
-            var jsonUser = JSON.parse('{ "name": req.session.name,"avatar": user.avatar  }')
-            res.render("../views/trangchu",{jsonUser:jsonUser,cinema: cinema,name: req.session.name});
+            
+            res.render("../views/trangchu",{cinema: cinema,name: req.session.name});
             // res.redirect('/');
           })
           

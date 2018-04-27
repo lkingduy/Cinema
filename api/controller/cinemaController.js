@@ -12,7 +12,7 @@ cinemaController.list = function (req, res) {
 
     else {
       
-      res.render("../views/trangchu", { cinemas: cinemas, name: req.session.name });
+      res.render("../views/trangchu", { cinemas: cinemas, name: req.session.name});
     }
   });
 }
@@ -24,7 +24,7 @@ cinemaController.show = function (req, res) {
 };
 //add film -> create page
 cinemaController.create = function (req, res) {
-  if (req.session.name == null) {
+  if (req.session.name[0] == null) {
     res.redirect('/');
   }
   res.render("taophim", { name: req.session.name });
@@ -62,7 +62,7 @@ cinemaController.save = function (req, res) {
   cinema.image = "/images/homeshow/" + imgName;
   // cinema.category = filmCategory.value;
   cinema.timePublish = Date.now();
-  cinema.userCreated = req.session.name;
+  cinema.userCreated = req.session.name[0];
   cinema.save(function (err) {
     if (err) {
       console.log(err);
@@ -92,7 +92,7 @@ cinemaController.update = function (req, res) {
       console.log(err);
       res.render("../views/edit", { cinema: req.body });
     }
-    res.redirect("/views/trangchu" + employee._id);
+    res.redirect("/" + employee._id);
   });
 };
 //delete

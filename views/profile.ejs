@@ -19,7 +19,7 @@
                         <h1 style="margin-bottom: 50px; font-size: 40px;" class="col-md-12 center-item">
                             <img src="/images/heading-left-line.png" style="line-height: 30px;">&nbsp;&nbsp;
                             <span style="color:rgb(40, 96, 144);">Profile của
-                                <%= name %>
+                                <%= name[0] %>
                             </span>
                             &nbsp;&nbsp;
                             <img src="/images/heading-right-line.png" style="line-height: 30px;">
@@ -32,7 +32,19 @@
             <div class="container">
                     <form action="/profile/saveProfile" method="POST" ref='uploadForm' id='uploadForm' encType="multipart/form-data">
                 <div class="row">
-                    <% if(users.avatar != null) { %>
+                    <% if(users.avatar == null) { %>
+                        <div class="col-md-4">
+                                <input type="hidden" name="id" value="<%= users.id %>"/>
+                                <label class="btn" for="exampleFormControlFile1">
+                                    <img src="/images/avatar.png" class="img-upload" id="blah" width="250" height="250"/>
+                                </label>
+                                
+    
+                                <label  class="btn btn-primary text-center center-item" for="exampleFormControlFile1" style="margin-left: 70px;">
+                                    Chọn ảnh đại diện</label>
+                                <input type="file" class="form-control-file hide" id="exampleFormControlFile1" name="avatar" onchange="readURL(this);">
+                        </div>
+                        <% } else { %>
                         <div class="col-md-4">
                                 <input type="hidden" name="id" value="<%= users.id %>"/>
                                 <label class="btn" for="exampleFormControlFile1">
@@ -44,17 +56,7 @@
                                     Chọn ảnh đại diện</label>
                                 <input type="file" class="form-control-file hide" id="exampleFormControlFile1" name="avatar" onchange="readURL(this);">
                         </div>
-                        <% } else {%>
-                            <div class="col-md-4">
-                                    <input type="hidden" name="id" value="<%= users.id %>"/>
-                                    <img src="/images/homeshow/profile.jpg" class="img-upload" id="blah" width="250" height="250"/>
-        
-                                    <label  class="btn btn-primary text-center center-item" for="exampleFormControlFile1" style="margin-left: 50px;">
-                                        Chọn ảnh đại diện</label>
-                                    <input type="file" class="form-control-file hide" id="exampleFormControlFile1" name="avatar" onchange="readURL(this);">
-                            </div>
-                            <% } %>
-                   
+                   <% } %>
                     <div class="col-md-8 profile-form">
                         
                             <div class="form-group">

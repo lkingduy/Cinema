@@ -1,6 +1,6 @@
 <!-- header + navbar -->
 <div class="header container-fluid" style="margin-bottom: 50px">
-    
+
     <div class="row">
         <a class="col-md-1" href="/" style="text-decoration: none;">
             <img src="/images/logo.png" width="100" height="70">
@@ -12,7 +12,7 @@
         </a>
         <div class="col-md-4">
             <div class="navbar-brand dropdown">
-                <input class="form-input" id="myInput" type="text" placeholder="Tìm kiếm..." size="40" ng-model="searchText"/>
+                <input class="form-input" id="myInput" type="text" placeholder="Tìm kiếm..." size="40" ng-model="searchText" />
                 <button type="submit" class="btn">
                     <i class="fas fa-search">
                     </i>
@@ -28,12 +28,20 @@
                 </a>
                 <div class="btn-group">
                     <a class="btn navbar-brand dropdown-toggle" href="" data-toggle="dropdown" style="padding: 20px 20px">
-                        <i class="fa fa-user fa-lg"></i>
-                        <p style="font-family: 'Black Han Sans';">
-                            <%= name %>&nbsp;
-                                <span class="caret"></span>
-                        </p>
-                    </a>
+                        <% if(name[1] == null) { %>
+                         <i>
+                             <img src="/images/avatar.png" width="30" height="30" style="border-radius: 50%"/>
+                         </i>
+                         <% } else {%>
+                     <i>
+                         <img src="<%= name[1] %>" width="30" height="30" style="border-radius: 50%"/>
+                     </i>
+                     <% }%>
+                     <p style="font-family: 'Black Han Sans';">
+                         <%= name[0] %>&nbsp;
+                             <span class="caret"></span>
+                     </p>
+                 </a>
 
                     <ul class="dropdown-menu">
                         <li>

@@ -5,9 +5,9 @@ var bcrypt = require('bcryptjs');
 var passport = require('passport');
 var profileController = {};
 
-//add show list film
+
 profileController.list = function(req,res){
-    User.findOne({'name': req.session.name}).exec(function (err, users) {
+    User.findOne({'name': req.session.name[0]}).exec(function (err, users) {
         if (err) {
           console.log("Error:", err);
         }
@@ -17,7 +17,7 @@ profileController.list = function(req,res){
       });
 }
 profileController.listPass = function(req,res){
-  User.findOne({'name': req.session.name}).exec(function (err, users) {
+  User.findOne({'name': req.session.name[0]}).exec(function (err, users) {
       if (err) {
         console.log("Error:", err);
       }
@@ -46,7 +46,8 @@ sampleFile.mv(__dirname +'/../../public/images/' + imgName, function(err) {
       res.render("../views/trangchu", {users: req.body});
     }
     
-    req.session.name = users.name;
+    req.session.name[0] = users.name;
+    req.session.name[1] = users.avatar;
     console.log(users);
     res.render("../views/profile" ,{users:users,name:req.session.name});
   });
@@ -64,7 +65,7 @@ profileController.updatePass = function(req, res) {
       res.render("../views/trangchu");
     }
     console.log("abc");
-    req.session.name = users.name;
+    req.session.name[0] = users.name;
     res.render("../views/changePassword" ,{users:users,name:req.session.name});
   });
 };

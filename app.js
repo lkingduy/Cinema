@@ -23,7 +23,6 @@ console.log(config.getDbConnectionString());
 mongoose.connect(config.getDbConnectionString());
 require('./api/models/cinemaModel');
 require('./api/models/userModel');
-require('./api/models/user');
 var indexRouter = require('./routes/index');
 var apiCinema = require('./api/routes/cinema');
 var app = express();
@@ -48,7 +47,13 @@ app.use('/auth', auth);
 app.use(fileUpload());
 
 
+passport.serializeUser(function(user, done) {
+  done(null, user);
+});
 
+passport.deserializeUser(function(user, done) {
+  done(null, user);
+});
 app.use(expressValidator({
   errorFormatter: function(param, msg, value) {
       var namespace = param.split('.')

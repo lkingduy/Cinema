@@ -5,7 +5,7 @@ var filmController = {};
 
 //film Profile
 filmController.list = function(req,res){
-    Cinema.find({'userCreated':req.session.name}).exec(function (err, cinemas) {
+    Cinema.find({'userCreated':req.session.name[0]}).exec(function (err, cinemas) {
         
         if (err) {
           console.log("Error:", err);
