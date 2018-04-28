@@ -32,7 +32,20 @@ profileController.update = function(req, res) {
 
 // The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file
 let sampleFile = req.files.avatar;
-var imgEnd = sampleFile.name.split('.').pop();
+console.log(sampleFile + "ahihihi");
+if(sampleFile == undefined){
+  User.findByIdAndUpdate(req.body.id, { $set: {name : req.body.name,phone: req.body.phone}}, { new: true }, function (err,users) {
+    if (err) {
+      console.log(err);
+      res.render("../views/trangchu", {users: req.body});
+    }    
+    req.session.name[0] = users.name;
+    console.log(users);
+    res.render("../views/profile" ,{users:users,name:req.session.name});
+  });
+}
+else {
+  var imgEnd = sampleFile.name.split('.').pop();
 
   var imgName = Date.now() + '.' + imgEnd ;
 // Use the mv() method to place the file somewhere on your server
@@ -52,6 +65,8 @@ sampleFile.mv(__dirname +'/../../public/images/' + imgName, function(err) {
     console.log(users);
     res.render("../views/profile" ,{users:users,name:req.session.name});
   });
+}
+
 };
 profileController.updatePass = function(req, res) {
   // var salt = bcrypt.genSaltSync(10);

@@ -21,6 +21,7 @@ router.get('/:id', function (req, res) {
         console.log("Error:", err);
       }
       else {
+        console.log(req.session.name+"hihi1")
         res.send({ status: 200, cinema : cinema })
       }
     });

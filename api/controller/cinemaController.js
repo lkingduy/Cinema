@@ -19,12 +19,14 @@ cinemaController.list = function (req, res) {
 
 //show single by id
 cinemaController.show = function (req, res) {
-  console.log(req.params.id);
+  console.log(req.params.id + "haha");
+  
   res.render("../views/chitietphim", { cinemaId: req.params.id, name: req.session.name });
+  console.log(req.session.name + "hihi");
 };
 //add film -> create page
 cinemaController.create = function (req, res) {
-  if (req.session.name[0] == null) {
+  if (req.session.name == null) {
     res.redirect('/');
   }
   res.render("taophim", { name: req.session.name });
@@ -153,31 +155,45 @@ cinemaController.updateFilm = function (req, res) {
 
   // The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file
   let sampleFile = req.files.image;
-
-  var imgEnd = sampleFile.name.split('.').pop();
-  var imgName = Date.now() + '.' + imgEnd;
-  console.log(sampleFile);
-  console.log(__dirname);
-  // Use the mv() method to place the file somewhere on your server
-
-
-  sampleFile.mv(__dirname + '/../../public/images/homeshow/' + imgName, function (err) {
-    if (err)
-      return res.status(500).send(err);
-  });
-
-  console.log(req.body);
-  req.body.image = imgName;
-  Cinema.findByIdAndUpdate(req.body.id, { $set: { id: req.body.id, name: req.body.name, image: "/images/homeshow/" + req.body.image, description: req.body.description.trim() } }, { new: true }, function (err, cinema) {
-    if (err) {
-      console.log("abc");
-      console.log(err);
-      console.log(cinema);
-      res.render("../views/trangchu");
-    }
-    console.log("xyz");
-    res.redirect("/cinema/" + req.body.id);
-  });
+  if(sampleFile == undefined){
+    Cinema.findByIdAndUpdate(req.body.id, { $set: { id: req.body.id, name: req.body.name, description: req.body.description.trim() } }, { new: true }, function (err, cinema) {
+      if (err) {
+        console.log("abc");
+        console.log(err);
+        console.log(cinema);
+        res.render("../views/trangchu");
+      }
+      console.log("xyz");
+      res.redirect("/cinema/" + req.body.id);
+    });
+  }
+  else {
+    var imgEnd = sampleFile.name.split('.').pop();
+    var imgName = Date.now() + '.' + imgEnd;
+    console.log(sampleFile);
+    console.log(__dirname);
+    // Use the mv() method to place the file somewhere on your server
+  
+  
+    sampleFile.mv(__dirname + '/../../public/images/homeshow/' + imgName, function (err) {
+      if (err)
+        return res.status(500).send(err);
+    });
+  
+    console.log(req.body);
+    req.body.image = imgName;
+    Cinema.findByIdAndUpdate(req.body.id, { $set: { id: req.body.id, name: req.body.name, image: "/images/homeshow/" + req.body.image, description: req.body.description.trim() } }, { new: true }, function (err, cinema) {
+      if (err) {
+        console.log("abc");
+        console.log(err);
+        console.log(cinema);
+        res.render("../views/trangchu");
+      }
+      console.log("xyz");
+      res.redirect("/cinema/" + req.body.id);
+    });
+  }
+ 
 }
 
 module.exports = cinemaController;

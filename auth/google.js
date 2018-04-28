@@ -13,9 +13,9 @@ passport.use(new GoogleStrategy({
   },
   function(req,accessToken, refreshToken, profile, done) {
     console.log(profile);
-       User.findOrCreate({ userid: profile.id }, { name: profile.displayName,userid: profile.id,email: profile.emails[0].value }, function (err, user) {
-        req.session.name = [user.name,user.avatar]
-        return done(err, user);
+       User.findOrCreate({ userid: profile.id }, { name: profile.displayName,userid: profile.id,email: profile.emails[0].value }, function (err, users) {
+        req.session.name = [users.name,users.avatar];
+        return done(err, users);
        });
   }
 ));
