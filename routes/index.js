@@ -3,8 +3,6 @@ var router = express.Router();
 var cinema = require('../api/controller/cinemaController');
 var user = require('../api/controller/signupController');
 var userLogin = require('../api/controller/loginController');
-var film = require('../api/controller/filmController');
-var updateFilm = require('../api/controller/updateFilmController');
 var profile = require('../api/controller/profileController');
 
 router.get('/', function(req, res) {
@@ -25,7 +23,7 @@ router.post('/save', function(req, res,next) {
 });
 
 router.get('/updateFilm/:id',function(req,res){
-  updateFilm.show(req,res);
+  cinema.showFilm(req,res);
 });
 router.get('/profile', function(req, res) {
   profile.list(req,res);
@@ -37,13 +35,13 @@ router.get('/logout',function(req,res){
   userLogin.logout(req,res);
 });
 router.get('/filmProfile', function(req, res) {
-  film.list(req, res);
+  cinema.listFilm(req, res);
 });
 router.post('/filmProfile/save', function(req, res) {
-  updateFilm.update(req,res);
+  cinema.updateFilm(req,res);
 });
 router.get('/filmProfile/delete/:id',function(req,res){
-  film.delete(req,res);
+  cinema.deleteFilm(req,res);
 });
 router.get('/changePassword', function(req, res) {
   profile.listPass(req,res);
