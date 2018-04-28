@@ -72,18 +72,33 @@ profileController.updatePass = function(req, res) {
   // var salt = bcrypt.genSaltSync(10);
   // var hash = bcrypt.hashSync('s0/\/\P4$$w0rD', salt);
   // req.body.password = hash;
-  User.findByIdAndUpdate(req.body.id, { $set: {name : req.body.name,phone: req.body.phone,password: req.body.password}}, { new: true }, function (err,users) {
-    
-    console.log(users.password);
+  User.findById(req.body.id,function(err,user){
+    console.log("chay vao day");
     if (err) {
-      
       console.log(err);
-      res.render("../views/trangchu");
+      return res.redirect("../views/error");
     }
-    console.log("abc");
-    req.session.name[0] = users.name;
-    res.render("../views/changePassword" ,{users:users,name:req.session.name});
-  });
+    else if(user.password != req.body.checkPassword){
+      console.log("Mat khau cua user bi sai!!!")
+      return res.send({ status: 403, errorMessage: 'Mat khau cua user bi sai!!!!!' })
+    }
+    else {
+      User.findByIdAndUpdate(req.body.id, { $set: {name : req.body.name,phone: req.body.phone,password: req.body.password}}, { new: true }, function (err,users) {
+    
+        console.log(users.password);
+        if (err) {
+          
+          console.log(err);
+          res.render("../views/trangchu");
+        }
+        console.log("abc");
+        req.session.name[0] = users.name;
+      
+        res.send({ users:users, name: req.session.name, successMessage: 'Sua mat khau thanh cong!!' });
+      });
+    }
+  })
+
 };
 
 

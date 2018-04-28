@@ -97,7 +97,7 @@
         <h1 style="text-align: center;color: rgb(40, 96, 144);">Đăng ký</h1>
       </div>
       <div class="modal-body">
-        <form class="form-horizontal" id="sign-up-form" method="POST">
+        <form class="form-horizontal" id="sign-up-form" method="POST" onsubmit="return validatePassword();">
           <div class="form-group">
             <div class="col-sm-offset-2 col-sm-8">
               <input type="text" class="form-control" id="name" name="name" placeholder="Nhập tên" required>
@@ -120,7 +120,7 @@
           </div>
           <div class="form-group">
             <div class="col-sm-offset-2 col-sm-8">
-              <button type="submit" id="sign-up-btn" class="btn btn-primary" style="width: 368px;">
+              <button  id="sign-up-btn" class="btn btn-primary" style="width: 368px;">
                 <i class="fa fa-user-plus fa-lg" style="color: white;"></i>&nbsp;&nbsp; Tạo tài khoản</button>
             </div>
           </div>
@@ -143,24 +143,28 @@
 <!-- script validation -->
 <script>
   var password = document.getElementById("password")
-    , confirm_password = document.getElementById("repassword");
+    , confirm_password = document.getElementById("repassword"),
+    formSignUpSubmit = document.getElementById("sign-up-form");
 
   function validatePassword() {
     if (password.value != confirm_password.value) {
       confirm_password.setCustomValidity("Passwords Don't Match");
+      confirm_password.focus();
+      formSignUpSubmit.preventDefault();
     } else {
       confirm_password.setCustomValidity('');
     }
+    return password.value == confirm_password.value
   }
 
   password.onchange = validatePassword;
   confirm_password.onkeyup = validatePassword;
 </script>
-
 <!-- check email exist -->
 <script>
   $(document).ready(function () {
     $('#sign-up-btn').on('click', function () {
+      if(!validatePassword()) return
       var formSignUp = $('#sign-up-form')
       var data = getFormData(formSignUp)
       $.ajax({

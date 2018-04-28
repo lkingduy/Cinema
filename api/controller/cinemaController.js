@@ -23,6 +23,7 @@ cinemaController.show = function (req, res) {
   
   res.render("../views/chitietphim", { cinemaId: req.params.id, name: req.session.name });
   console.log(req.session.name + "hihi");
+  
 };
 //add film -> create page
 cinemaController.create = function (req, res) {
