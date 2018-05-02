@@ -5,6 +5,7 @@ mongoose.model("User");
 var loginController = {};
 var bcrypt = require('bcryptjs');
 var constants = require('../../config/constants')
+var count = 0;
 
 // loginController.
 //hashing a password before saving it to the database
@@ -20,28 +21,23 @@ var constants = require('../../config/constants')
 //     })
 //   });
 loginController.login = function(req,res){
-  User.findOne({email : req.body.email}).exec(function(err,user){
+  
+  User.find({}).exec(function(err,users){
     if(err){
       console.log(err);
       res.redirect("../views/error");
     }
-    else{
-        if(user.password == req.body.password){
-          Cinema.find({}).exec(function(err,cinema){
-            console.log("logged in");
-            // req.session.name = user.name +'&'+user.avatar;
-            req.session.name = [user.name,user.avatar];
-            console.log(req.session.name);
-            
-            res.render("../views/trangchu",{cinema: cinema,name: req.session.name});
-            // res.redirect('/');
-          })
-          
-        }
-        else {
-          
-        }                             
+    for(var i = 0; i<users.length;i++){
+      if(users[i].email == req.body.email && users[i].password == req.body.password){
+        req.session.name = [users.name,users.avatar];
+        count = 1;
+        res.send({ users:users, name: req.session.name, successMessage: 'Đăng nhập thành công!!' });       
+      }
     }
+    if(count == 0){
+      console.log("Mat khau hoac email cua user bi sai!!!")
+      return res.send({ status: 403, errorMessage: 'Mat khau hoac email cua user bi sai!!!!!' })
+    }                                      
   }) 
   
 };
@@ -51,6 +47,7 @@ loginController.logout = function(req,res){
       if(err) {
         console.log(err);
       } else {
+        count = 0;
         return res.redirect('/');
       }
     });
